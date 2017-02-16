@@ -1,1 +1,133 @@
 @import "../assets/stylesheets/_bootstrap.scss";
+
+$colorBorder: #fff;  //цвет border
+$colorBackground: #f6faff; //цвет фона
+
+//миксин для основного текста
+@mixin mainText($fontMainSize: 1.5em, $colorMainFont: grey ) {
+    font-family: "Roboto", "Arial", sans-serif;
+    color: $colorMainFont;
+    font-size: $fontMainSize;
+}
+
+//миксин для заголовка
+@mixin titleText($fontTitleSize: 5.43rem, $colorTitleFont: #f6faff) {
+    font-family: "Roboto", "Arial", sans-serif;
+    font-size: $fontTitleSize;
+    color: $colorTitleFont;
+}
+
+//миксин для border
+@mixin border($colorBorder, $borderWidth: 4px, $borderDecor: solid, $borderRadius: 0%) {
+    border-width: $borderWidth;
+    border-style: $borderDecor;
+    border-radius: $borderRadius;
+    border-color: $colorBorder;
+}
+
+body {
+    @include mainText();
+    background-color: $colorBackground;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+//################  Меню справа  ######################
+.container-fluid {
+    padding: 0;
+}
+
+//фон главной страницы
+.main-page {
+    position: relative;
+    background-image: url("../img/main-page.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+//верхняя часть страницы
+.navigation {
+    @include clearfix;
+}
+
+//логотип
+.logo {
+    @include make-sm-column(1);
+    padding: 10px;
+    @include border($colorBorder);
+    margin: 2%;
+}
+
+//заголовок слева снизу
+.title {
+    @include make-sm-column(4);
+    @include center-block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-right: -15px;
+    padding: 3em;
+    text-align: center;
+
+    h1 {
+        @include titleText();
+
+        span {
+            font-size: 3rem;
+        }
+    }
+
+    &-btn {
+        float: right;
+    }
+}
+
+//кнопка справа снизу
+.main-btn {
+    @include border($colorBorder);
+
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    padding: 1% 2%;
+
+    &:hover {
+      color: $colorBorder;
+    }
+
+    a {
+        @include mainText();
+        &:hover {
+          text-decoration: none;
+        }
+    }
+}
+
+//главное меню
+.main-menu {
+    float: right;
+}
+
+nav {
+    ul {
+        @include make-sm-column(0.5);
+        position: fixed;
+        right: 0;
+        top: 0;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    li {
+        padding: 10px;
+        height: auto;
+        @include border($colorBorder, $borderWidth: 1px);
+        margin-bottom: -1px;
+        box-shadow: 0 0 4px 0;
+    }
+}

@@ -5818,3 +5818,121 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+
+body {
+  font-family: "Roboto", "Arial", sans-serif;
+  color: grey;
+  font-size: 1.5em;
+  background-color: #f6faff; }
+
+img {
+  width: 100%;
+  height: auto; }
+
+.container-fluid {
+  padding: 0; }
+
+.main-page {
+  position: relative;
+  background-image: url("../img/main-page.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh; }
+
+.navigation:before, .navigation:after {
+  content: " ";
+  display: table; }
+
+.navigation:after {
+  clear: both; }
+
+.logo {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding: 10px;
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 0%;
+  border-color: #fff;
+  margin: 2%; }
+  @media (min-width: 768px) {
+    .logo {
+      float: left;
+      width: 8.33333%; } }
+
+.title {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin-right: -15px;
+  padding: 3em;
+  text-align: center; }
+  @media (min-width: 768px) {
+    .title {
+      float: left;
+      width: 33.33333%; } }
+  .title h1 {
+    font-family: "Roboto", "Arial", sans-serif;
+    font-size: 5.43rem;
+    color: #f6faff; }
+    .title h1 span {
+      font-size: 3rem; }
+  .title-btn {
+    float: right; }
+
+.main-btn {
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 0%;
+  border-color: #fff;
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  padding: 1% 2%; }
+  .main-btn:hover {
+    color: #fff; }
+  .main-btn a {
+    font-family: "Roboto", "Arial", sans-serif;
+    color: grey;
+    font-size: 1.5em; }
+    .main-btn a:hover {
+      text-decoration: none; }
+
+.main-menu {
+  float: right; }
+
+nav ul {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  padding: 0;
+  margin: 0;
+  list-style: none; }
+  @media (min-width: 768px) {
+    nav ul {
+      float: left;
+      width: 4.16667%; } }
+
+nav li {
+  padding: 10px;
+  height: auto;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0%;
+  border-color: #fff;
+  margin-bottom: -1px;
+  box-shadow: 0 0 4px 0; }
