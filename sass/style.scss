@@ -1,22 +1,19 @@
 @import "../assets/stylesheets/_bootstrap.scss";
-
-$colorBorder: #fff;  //цвет border
+$colorBorder: #fff; //цвет border
 $colorBackground: #f6faff; //цвет фона
-
-//миксин для основного текста
-@mixin mainText($fontMainSize: 1.5em, $colorMainFont: grey ) {
+$colorDecorate: #fff200; //миксин для основного текста
+@mixin regularText($fontRegularSize: 1.5em, $colorRegularFont: grey ) {
     font-family: "Roboto", "Arial", sans-serif;
-    color: $colorMainFont;
-    font-size: $fontMainSize;
+    color: $colorRegularFont;
+    font-size: $fontRegularSize;
 }
-
 //миксин для заголовка
-@mixin titleText($fontTitleSize: 5.43rem, $colorTitleFont: #f6faff) {
+@mixin boldText($fontBoldSize: 5.43em, $colorBoldFont: #f6faff) {
     font-family: "Roboto", "Arial", sans-serif;
-    font-size: $fontTitleSize;
-    color: $colorTitleFont;
+    font-size: $fontBoldSize;
+    color: $colorBoldFont;
+    line-height: calc($fontBoldSize + 0.3em);
 }
-
 //миксин для border
 @mixin border($colorBorder, $borderWidth: 4px, $borderDecor: solid, $borderRadius: 0%) {
     border-width: $borderWidth;
@@ -26,7 +23,7 @@ $colorBackground: #f6faff; //цвет фона
 }
 
 body {
-    @include mainText();
+    @include regularText();
     background-color: $colorBackground;
 }
 
@@ -34,7 +31,20 @@ img {
     width: 100%;
     height: auto;
 }
-//################  Меню справа  ######################
+
+.undertitle {
+    @include boldText($fontBoldSize: 3em, $colorBoldFont: #31353e);
+    @include make-sm-column(6);
+    float: none;
+    @include center-block();
+    @include clearfix();
+
+    h2 {
+        text-align: center;
+    }
+}
+//################  Главная страница  ######################
+
 .container-fluid {
     padding: 0;
 }
@@ -56,6 +66,7 @@ img {
 
 //логотип
 .logo {
+    @include make-xs-column(3);
     @include make-sm-column(1);
     padding: 10px;
     @include border($colorBorder);
@@ -65,7 +76,7 @@ img {
 //заголовок слева снизу
 .title {
     @include make-sm-column(4);
-    @include center-block;
+    @include center-block();
     position: absolute;
     left: 0;
     bottom: 0;
@@ -74,7 +85,7 @@ img {
     text-align: center;
 
     h1 {
-        @include titleText();
+        @include boldText();
 
         span {
             font-size: 3rem;
@@ -89,25 +100,49 @@ img {
 //кнопка справа снизу
 .main-btn {
     @include border($colorBorder);
-
     position: absolute;
     right: 5%;
     bottom: 5%;
     padding: 1% 2%;
 
     &:hover {
-      color: $colorBorder;
+        animation: fill 5s linear forwards;
+        cursor: pointer;
     }
 
     a {
-        @include mainText();
+        @include regularText();
+
         &:hover {
-          text-decoration: none;
+            text-decoration: none;
         }
     }
 }
 
-//главное меню
+
+@keyframes fill {
+    0% {
+        background-image: linear-gradient(to right, $colorBorder 0%, transparent 0%);
+    }
+
+    25% {
+        background-image: linear-gradient(to right, $colorBorder 25%, transparent 25%);
+    }
+
+    50% {
+        background-image: linear-gradient(to right, $colorBorder 50%, transparent 50%);
+    }
+
+    75% {
+        background-image: linear-gradient(to right, $colorBorder 75%, transparent 75%);
+    }
+
+    100% {
+        background-color: $colorBorder;
+    }
+}
+
+//меню
 .main-menu {
     float: right;
 }
@@ -119,7 +154,7 @@ nav {
         right: 0;
         top: 0;
         padding: 0;
-        margin: 0;
+        margin: -1px 0 0;
         list-style: none;
     }
 
@@ -130,4 +165,118 @@ nav {
         margin-bottom: -1px;
         box-shadow: 0 0 4px 0;
     }
+}
+
+//####################### Блок услуг ###############################
+.services__list {
+    display: block;
+    list-style: none;
+    margin-top: 50px;
+
+    li {
+        position: relative;
+        @include make-sm-column(3);
+        text-align: center;
+
+        img {
+            width: 180px;
+            height: 180px;
+            @extend .img-circle;
+            border: 10px solid $colorBackground;
+            box-shadow: 0 0 0 10px $colorDecorate;
+            margin-bottom: 20px;
+        }
+
+        &:hover {}
+
+        .btn {
+            visibility: hidden;
+        }
+    }
+
+    .services__list-item-title {
+        @include regularText();
+    }
+}
+
+
+//################## Блок специального предложения ######################
+.stock {
+    &__col {
+        @include make-xs-column(6);
+        margin-top: 30px;
+    }
+
+    &__timer-title {
+        margin-top: 140px;
+        padding-bottom: 48px;
+    }
+
+    &__timer {
+        display: block;
+        float: left;
+
+        div {
+            float: left;
+            margin-right: 20px;
+        }
+    }
+
+    &__form {
+        input {
+            @include make-sm-column(10);
+            padding: 2% 1%;
+            @include border($colorBorder, $borderRadius: 10px);
+            box-shadow: 0 2px 4px 0;
+        }
+
+        .btn {
+            @include border($colorBorder);
+            box-shadow: none;
+            background-color: transparent;
+
+            &:hover {
+                box-shadow: 0 2px 4px 0;
+            }
+        }
+    }
+}
+
+
+//################## Блок о компании ######################
+
+.about {
+    @include clearfix;
+
+    & &__col {
+        @include make-xs-column(6);
+    }
+
+    img {
+        @include make-xs-column(4);
+        @include center-block();
+    }
+}
+
+//################## Блок галереи ######################
+
+.gallery {
+  ul {
+    display: block;
+    list-style: none;
+    li {
+      position: relative;
+      text-align: center;
+      @include make-sm-column(3);
+      img {
+
+      }
+      a {
+        position: absolute;
+        top: 50%;
+        left: 25%;
+      }
+    }
+  }
+
 }
