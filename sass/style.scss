@@ -1,25 +1,27 @@
 @import "../assets/stylesheets/_bootstrap.scss";
 $colorBorder: #fff; //цвет border
 $colorBackground: #f6faff; //цвет фона
-$colorDecorate: #fff200; //миксин для основного текста
-@mixin regularText($fontRegularSize: 1.5em, $colorRegularFont: grey ) {
+$colorDecorate: #fff200;
+//миксин для regular текста
+@mixin regularText($fontRegularSize: 1.5rem, $colorRegularFont: #31353e ) {
     font-family: "Roboto", "Arial", sans-serif;
-    color: $colorRegularFont;
-    font-size: $fontRegularSize;
+    color: #{$colorRegularFont};
+    font-size: #{$fontRegularSize};
 }
-//миксин для заголовка
-@mixin boldText($fontBoldSize: 5.43em, $colorBoldFont: #f6faff) {
+//миксин для bold
+@mixin boldText($fontBoldSize: 5.43rem, $colorBoldFont: #31353e) {
     font-family: "Roboto", "Arial", sans-serif;
-    font-size: $fontBoldSize;
-    color: $colorBoldFont;
-    line-height: calc($fontBoldSize + 0.3em);
+    font-weight: bold;
+    font-size: #{$fontBoldSize};
+    color: #{$colorBoldFont};
+    line-height: $fontBoldSize + 0.3rem;
 }
 //миксин для border
 @mixin border($colorBorder, $borderWidth: 4px, $borderDecor: solid, $borderRadius: 0%) {
-    border-width: $borderWidth;
-    border-style: $borderDecor;
-    border-radius: $borderRadius;
-    border-color: $colorBorder;
+    border-width: #{$borderWidth};
+    border-style: #{$borderDecor};
+    border-radius: #{$borderRadius};
+    border-color: #{$colorBorder};
 }
 
 body {
@@ -33,10 +35,10 @@ img {
 }
 
 .undertitle {
-    @include boldText($fontBoldSize: 3em, $colorBoldFont: #31353e);
+    @include boldText($fontBoldSize: 3rem, $colorBoldFont: #31353e);
     @include make-sm-column(6);
     float: none;
-    @include center-block();
+    @extend .center-block;
     @include clearfix();
 
     h2 {
@@ -48,47 +50,45 @@ img {
 .container-fluid {
     padding: 0;
 }
-
 //фон главной страницы
+
 .main-page {
     position: relative;
     background-image: url("../img/main-page.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 100vh;
+    min-height: 100vh;
 }
-
 //верхняя часть страницы
+
 .navigation {
     @include clearfix;
 }
-
 //логотип
+
 .logo {
-    @include make-xs-column(3);
-    @include make-sm-column(1);
+    max-width: 10%;
     padding: 10px;
     @include border($colorBorder);
     margin: 2%;
 }
-
 //заголовок слева снизу
+
 .title {
-    @include make-sm-column(4);
-    @include center-block();
     position: absolute;
     left: 0;
     bottom: 0;
     margin-right: -15px;
     padding: 3em;
     text-align: center;
+    color: #fff;
 
     h1 {
-        @include boldText();
+        font-size: 3rem;
 
-        span {
-            font-size: 3rem;
+        &::first-line {
+            @include boldText($colorBoldFont: #fff);
         }
     }
 
@@ -96,17 +96,16 @@ img {
         float: right;
     }
 }
-
 //кнопка справа снизу
-.main-btn {
+
+.btn {
     @include border($colorBorder);
-    position: absolute;
-    right: 5%;
-    bottom: 5%;
     padding: 1% 2%;
+    animation: fill 0.5s linear 0 infinite alternate both;
+    animation-play-state: paused;
 
     &:hover {
-        animation: fill 5s linear forwards;
+        animation-play-state: running;
         cursor: pointer;
     }
 
@@ -118,23 +117,13 @@ img {
         }
     }
 }
-
-
 @keyframes fill {
     0% {
-        background-image: linear-gradient(to right, $colorBorder 0%, transparent 0%);
-    }
-
-    25% {
-        background-image: linear-gradient(to right, $colorBorder 25%, transparent 25%);
+        background-color: transparent;
     }
 
     50% {
-        background-image: linear-gradient(to right, $colorBorder 50%, transparent 50%);
-    }
-
-    75% {
-        background-image: linear-gradient(to right, $colorBorder 75%, transparent 75%);
+        background-color: rgba(100,100,100,0.5);
     }
 
     100% {
@@ -142,6 +131,11 @@ img {
     }
 }
 
+.main-btn {
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+}
 //меню
 .main-menu {
     float: right;
@@ -149,13 +143,14 @@ img {
 
 nav {
     ul {
-        @include make-sm-column(0.5);
+        width: 5%;
         position: fixed;
         right: 0;
         top: 0;
         padding: 0;
         margin: -1px 0 0;
         list-style: none;
+        z-index: 5;
     }
 
     li {
@@ -166,43 +161,45 @@ nav {
         box-shadow: 0 0 4px 0;
     }
 }
-
 //####################### Блок услуг ###############################
-.services__list {
-    display: block;
-    list-style: none;
-    margin-top: 50px;
 
-    li {
-        position: relative;
-        @include make-sm-column(3);
-        text-align: center;
+.services {
+    ul {
+        display: block;
+        list-style: none;
+        margin-top: 50px;
 
-        img {
-            width: 180px;
-            height: 180px;
-            @extend .img-circle;
-            border: 10px solid $colorBackground;
-            box-shadow: 0 0 0 10px $colorDecorate;
-            margin-bottom: 20px;
+        li {
+            position: relative;
+            @include make-sm-column(3);
+            text-align: center;
+
+            img {
+                width: 180px;
+                height: 180px;
+                @extend .img-circle;
+                border: 10px solid $colorBackground;
+                box-shadow: 0 0 0 10px $colorDecorate;
+                margin-bottom: 20px;
+            }
+
+            &:hover {}
+
+            p {
+                @include regularText();
+                word-break: break-all;
+            }
+
+            .btn {
+                visibility: hidden;
+            }
         }
-
-        &:hover {}
-
-        .btn {
-            visibility: hidden;
-        }
-    }
-
-    .services__list-item-title {
-        @include regularText();
     }
 }
-
-
 //################## Блок специального предложения ######################
+
 .stock {
-    &__col {
+    &-col {
         @include make-xs-column(6);
         margin-top: 30px;
     }
@@ -212,7 +209,7 @@ nav {
         padding-bottom: 48px;
     }
 
-    &__timer {
+    &-timer {
         display: block;
         float: left;
 
@@ -241,42 +238,107 @@ nav {
         }
     }
 }
-
-
 //################## Блок о компании ######################
 
 .about {
     @include clearfix;
 
-    & &__col {
-        @include make-xs-column(6);
+    &-col-left {
+        @include make-xs-column(7);
+
+        h3 {
+            @include boldText($fontBoldSize: 2.8rem);
+        }
     }
 
-    img {
-        @include make-xs-column(4);
-        @include center-block();
+    &-col-right {
+        @include make-xs-column(5);
+        text-align: center;
+
+        img {
+            @extend .center-block;
+            max-width: 220px;
+            width: 40%;
+        }
     }
 }
-
 //################## Блок галереи ######################
 
 .gallery {
-  ul {
-    display: block;
-    list-style: none;
-    li {
-      position: relative;
-      text-align: center;
-      @include make-sm-column(3);
-      img {
+    margin-bottom: 30px;
+    @include clearfix();
 
-      }
-      a {
-        position: absolute;
-        top: 50%;
-        left: 25%;
+    ul {
+        display: block;
+        list-style: none;
+        padding: 0;
+
+        li {
+            position: relative;
+            text-align: center;
+            @include make-sm-column(3);
+            padding: 0;
+
+            img {}
+
+            a {
+                position: absolute;
+                top: 50%;
+                left: 25%;
+            }
+        }
+    }
+
+    .btn-gallery {
+        float: right;
+    }
+}
+//################## Блок отзывов ######################
+.reviews {
+    ul {
+        list-style: none;
+        display: block;
+        padding: 0;
+        @include center-block;
+        @extend .clearfix;
+
+        li {
+            @extend .clearfix;
+
+            img {
+                @include make-xs-column(3);
+            }
+
+            .review-col {
+                @include make-xs-column(9);
+
+                &__author {
+                    float: right;
+                    @include boldText($fontBoldSize: 1rem);
+                    &::first-line {
+                      @include boldText($fontBoldSize: 1.5rem);
+                    }
+                }
+            }
+        }
+    }
+}
+//################## Блок работников ######################
+
+.workers {
+  ul {
+    list-style: none;
+    padding: 0;
+    display: block;
+    li {
+      @include make-xs-column(4);
+      margin-right: 77px;
+      text-align: center;
+      
+      img {
+        width: 50%;
+        border-radius: 50%;
       }
     }
   }
-
 }
