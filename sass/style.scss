@@ -1,15 +1,14 @@
 @import "../assets/stylesheets/_bootstrap.scss";
 $colorBorder: #fff; //цвет border
 $colorBackground: #f6faff; //цвет фона
-$colorDecorate: #fff200;
-//миксин для regular текста
+$colorDecorate: #fff200; //миксин для regular текста
 @mixin regularText($fontRegularSize: 1.5rem, $colorRegularFont: #31353e ) {
     font-family: "Roboto", "Arial", sans-serif;
     color: #{$colorRegularFont};
     font-size: #{$fontRegularSize};
 }
 //миксин для bold
-@mixin boldText($fontBoldSize: 5.43rem, $colorBoldFont: #31353e) {
+@mixin boldText($fontBoldSize: 3.3rem, $colorBoldFont: #31353e) {
     font-family: "Roboto", "Arial", sans-serif;
     font-weight: bold;
     font-size: #{$fontBoldSize};
@@ -17,13 +16,15 @@ $colorDecorate: #fff200;
     line-height: $fontBoldSize + 0.3rem;
 }
 //миксин для border
-@mixin border($colorBorder, $borderWidth: 4px, $borderDecor: solid, $borderRadius: 0%) {
+@mixin border($colorBorder, $borderWidth: 4px, $borderDecor: solid, $borderRadius: 10px) {
     border-width: #{$borderWidth};
     border-style: #{$borderDecor};
     border-radius: #{$borderRadius};
     border-color: #{$colorBorder};
 }
-
+html {
+  font-size: 16px;
+}
 body {
     @include regularText();
     background-color: $colorBackground;
@@ -35,13 +36,14 @@ img {
 }
 
 .undertitle {
-    @include boldText($fontBoldSize: 3rem, $colorBoldFont: #31353e);
+
     @include make-sm-column(6);
     float: none;
     @extend .center-block;
     @include clearfix();
 
     h2 {
+        @include regularText($fontRegularSize: 3rem, $colorRegularFont: #31353e);
         text-align: center;
     }
 }
@@ -80,13 +82,14 @@ img {
     left: 0;
     bottom: 0;
     margin-right: -15px;
-    padding: 3em;
+    padding: 2em;
     text-align: center;
     color: #fff;
 
     h1 {
-        font-size: 3rem;
-
+      text-align: center;
+      min-width: 320px;
+        @include regularText($fontRegularSize: 1.5rem, $colorRegularFont: #fff);
         &::first-line {
             @include boldText($colorBoldFont: #fff);
         }
@@ -137,6 +140,7 @@ img {
     bottom: 5%;
 }
 //меню
+
 .main-menu {
     float: right;
 }
@@ -219,12 +223,18 @@ nav {
         }
     }
 
-    &__form {
-        input {
-            @include make-sm-column(10);
+    &-form {
+        input:not([type="submit"]) {
+            width: 80%;
             padding: 2% 1%;
             @include border($colorBorder, $borderRadius: 10px);
             box-shadow: 0 2px 4px 0;
+        }
+
+        .stock-form__btn {
+          @include border($colorBorder, $borderRadius: 30px, $borderWidth: 0px)
+          width: 50%;
+          padding: 20px 10px;
         }
 
         .btn {
@@ -242,10 +252,10 @@ nav {
 
 .about {
     @include clearfix;
-
+    margin-top: 30px;
     &-col-left {
         @include make-xs-column(7);
-
+        @include regularText($fontRegularSize: 1rem);
         h3 {
             @include boldText($fontBoldSize: 2.8rem);
         }
@@ -294,6 +304,7 @@ nav {
     }
 }
 //################## Блок отзывов ######################
+
 .reviews {
     ul {
         list-style: none;
@@ -315,8 +326,9 @@ nav {
                 &__author {
                     float: right;
                     @include boldText($fontBoldSize: 1rem);
+
                     &::first-line {
-                      @include boldText($fontBoldSize: 1.5rem);
+                        @include boldText($fontBoldSize: 1.5rem);
                     }
                 }
             }
@@ -326,19 +338,156 @@ nav {
 //################## Блок работников ######################
 
 .workers {
-  ul {
-    list-style: none;
-    padding: 0;
-    display: block;
-    li {
-      @include make-xs-column(4);
-      margin-right: 77px;
-      text-align: center;
-      
-      img {
-        width: 50%;
-        border-radius: 50%;
-      }
+    padding-top: 20px;
+
+    ul {
+        list-style: none;
+        padding: 20px 0 0;
+        @include clearfix();
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+
+        li {
+            @include make-sm-column(3);
+            text-align: center;
+            background-color: #edeff1;
+            box-shadow: 0 0 29px 0;
+            padding: 30px 20px;
+
+
+            img {
+                width: 100%;
+                border-radius: 50%;
+                padding-bottom: 25px;
+            }
+
+            .worker__name {
+              @include regularText($fontRegularSize:1.75rem);
+            }
+
+            .worker__description {
+              @include regularText($fontRegularSize:1.3rem);
+
+
+            }
+        }
     }
-  }
+}
+//################## Блок карты ######################
+
+.map {
+    position: relative;
+
+    .map-contacts {
+        @include make-xs-column(3);
+        position: absolute;
+        top: 35%;
+        right: 10%;
+        background-color: #fff;
+        padding: 20px;
+        @include border($colorBorder);
+
+        &__title, &__phone p {
+            @include regularText($fontRegularSize: 0.6rem);
+        }
+
+        & a:first-of-type,
+        &__address {
+            @include boldText($fontBoldSize: 0.9rem);
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        &__btn {
+            background-color: #fdc2c1;
+            width: 100%;
+            padding: 10px 30px;
+
+            & a {
+                word-break: break-all;
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .map-contacts {
+        position: relative;
+    }
+}
+//################## Футер ######################
+
+.footer-col {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-top: 42px;
+    margin-bottom: 42px;
+
+    .social {
+        @include make-xs-column(4);
+
+        ul {
+            padding: 0;
+
+            list-style: none;
+
+            li {
+
+                width: 47px;
+                height: 47px;
+                border-radius: 50%;
+                background-color: grey;
+                display: inline-block;
+            }
+
+          .social-btn {
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.7;
+            &:hover {
+              opacity: 0.9;
+            }
+          }
+            .social-btn__vk {
+                background-image: url("../img/vk-icon.png");
+            }
+
+            .social-btn__fb {
+                background-image: url("../img/fb-icon.png");
+            }
+
+            .social-btn__insta {
+                background-image: url("../img/insta-icon.png");
+            }
+        }
+    }
+
+    .ad {
+        @include make-xs-column(4);
+        text-align: center;
+        p:first-of-type {
+          @include boldText($fontBoldSize: 1.31rem);
+        }
+        p {
+          @include boldText($fontBoldSize: 0.6rem);
+        }
+    }
+
+    .delivery {
+        @include make-xs-column(4);
+        @include regularText($fontRegularSize: 0.9rem);
+        input[type="email"] {
+          background-color: transparent;
+          border: none;
+          border-bottom: 2px solid lightgrey;
+        }
+        .delivery-btn {
+          background-color: transparent;
+          border: none;
+        }
+    }
 }

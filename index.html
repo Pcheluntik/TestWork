@@ -19,7 +19,7 @@
       <!--Блок логотипа-->
       <div class="navigation">
         <div class="logo">
-          <img src="E:\HTML academy\235169-gllacy-1\img\logotype.svg" alt="Название компании" width=170 height=104>
+          <img src="img\logotype.svg" alt="Название компании" width=170 height=104>
         </div>
 
         <!--Блок навигации-->
@@ -333,7 +333,7 @@
     </div>
 
       <!--#########################  Работники  #################################-->
-    <div class="container">
+    <div class="container-fluid">
       <div class="workers">
 
         <div class="undertitle">
@@ -344,7 +344,7 @@
           <li>
             <img src="img/gallery2.jpg" alt="Сотрудник 1" width=240 height=240>
             <p class="worker__name">Вяземский Константин Эдуардович</p>
-            <p class="worker__description"> лауреат премии “Бухгалтер года”,кандидат в профсоюз</p>
+            <p class="worker__description"> лауреат премии “Бухгалтер года”, кандидат в профсоюз</p>
           </li>
 
           <li>
@@ -400,39 +400,40 @@
   </main>
 
   <footer>
-    <div class="container">
+    <div class="container-fluid">
+      <div class="footer-col"
+        <!--#########################  Кнопки соц.сетей  #######################-->
+        <section class="social">
+          <ul>
+            <li class="social-btn__vk social-btn">
+              <a href="#"></a>
+            </li>
 
-      <!--#########################  Кнопки соц.сетей  #######################-->
-      <section class="social">
-        <ul>
-          <li class="social-btn__vk social-btn">
-            <a href="#"></a>
-          </li>
+            <li class="social-btn social-btn__fb">
+              <a href="#"></a>
+            </li>
 
-          <li class="social-btn social-btn__fb">
-            <a href="#"></a>
-          </li>
+            <li class="social-btn social-btn__insta">
+              <a href="#"></a>
+            </li>
+          </ul>
+        </section>
 
-          <li class="social-btn social-btn__insta">
-            <a href="#"></a>
-          </li>
-        </ul>
-      </section>
+        <!--######################  Текст последнего шанса  ##################-->
+        <section class="ad">
+          <p>Давайте дружить, это выгодно!</p>
+          <p>Скидка 10% для друзей из социальных сетей.</p>
+        </section>
 
-      <!--######################  Текст последнего шанса  ##################-->
-      <section class="ad">
-        <p>Давайте дружить, это выгодно!</p>
-        <p>Скидка 10% для друзей из социальных сетей.</p>
-      </section>
-
-      <!--######################  Рассылка #################################-->
-      <section class="delivery">
-        <form class="delivery-form">
-          <label for="delivery-form__email">Подписаться на рассылку</label>
-          <input type="email" id="delivery-form__email" name="delivery-form__email" placeholder="Введите e-mail" required>
-          <input type="submit" class="btn delivery-btn">
-        </form>
-      </section>
+        <!--######################  Рассылка #################################-->
+        <section class="delivery">
+          <form class="delivery-form">
+            <label for="delivery-form__email">Подписаться на рассылку</label>
+            <input type="email" id="delivery-form__email" name="delivery-form__email" placeholder="Введите e-mail" required>
+            <input type="submit" class="btn delivery-btn" value="">
+          </form>
+        </section>
+      </div>
     </div>
   </footer>
 </body>
