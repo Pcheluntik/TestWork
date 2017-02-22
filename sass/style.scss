@@ -2,14 +2,14 @@
 $colorBorder: #fff; //цвет border
 $colorBackground: #f6faff; //цвет фона
 $colorDecorate: #fff200; //миксин для regular текста
-@mixin regularText($fontRegularSize: 1.5rem, $colorRegularFont: #31353e ) {
-    font-family: "Roboto", "Arial", sans-serif;
+@mixin regularText($fontRegularSize: 1rem, $colorRegularFont: #31353e ) {
+    font-family: "Roboto Regular", "Arial", sans-serif;
     color: #{$colorRegularFont};
     font-size: #{$fontRegularSize};
 }
 //миксин для bold
 @mixin boldText($fontBoldSize: 3.3rem, $colorBoldFont: #31353e) {
-    font-family: "Roboto", "Arial", sans-serif;
+    font-family: "Roboto Bold", "Arial", sans-serif;
     font-weight: bold;
     font-size: #{$fontBoldSize};
     color: #{$colorBoldFont};
@@ -22,9 +22,11 @@ $colorDecorate: #fff200; //миксин для regular текста
     border-radius: #{$borderRadius};
     border-color: #{$colorBorder};
 }
+
 html {
-  font-size: 16px;
+    font-size: 16px;
 }
+
 body {
     @include regularText();
     background-color: $colorBackground;
@@ -36,11 +38,10 @@ img {
 }
 
 .undertitle {
-
-    @include make-sm-column(6);
     float: none;
     @extend .center-block;
     @include clearfix();
+    margin-top: 30px;
 
     h2 {
         @include regularText($fontRegularSize: 3rem, $colorRegularFont: #31353e);
@@ -71,9 +72,12 @@ img {
 
 .logo {
     max-width: 10%;
+    min-width: 120px;
     padding: 10px;
     @include border($colorBorder);
-    margin: 2%;
+    float: left;
+    margin-left: 2%;
+    margin-top: 20px;
 }
 //заголовок слева снизу
 
@@ -85,11 +89,17 @@ img {
     padding: 2em;
     text-align: center;
     color: #fff;
+    @include border($colorBorder);
+    border-left: none;
+    border-bottom: none;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
 
     h1 {
-      text-align: center;
-      min-width: 320px;
+        text-align: center;
+        min-width: 320px;
         @include regularText($fontRegularSize: 1.5rem, $colorRegularFont: #fff);
+
         &::first-line {
             @include boldText($colorBoldFont: #fff);
         }
@@ -138,6 +148,10 @@ img {
     position: absolute;
     right: 5%;
     bottom: 5%;
+
+    a {
+        color: #fff;
+    }
 }
 //меню
 
@@ -148,7 +162,6 @@ img {
 nav {
     ul {
         width: 5%;
-        position: fixed;
         right: 0;
         top: 0;
         padding: 0;
@@ -190,7 +203,7 @@ nav {
             &:hover {}
 
             p {
-                @include regularText();
+                @include regularText($fontRegularSize: 1.4rem);
                 word-break: break-all;
             }
 
@@ -203,48 +216,78 @@ nav {
 //################## Блок специального предложения ######################
 
 .stock {
-    &-col {
+    @include clearfix();
+    background-image: url("../img/stock.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 20px;
+
+    &-left-col {
+        @include make-xs-column-offset(1);
         @include make-xs-column(6);
         margin-top: 30px;
+
+        p {
+            @include regularText($fontRegularSize: 1.62rem);
+        }
     }
 
-    &__timer-title {
-        margin-top: 140px;
-        padding-bottom: 48px;
+    &-right-col {
+        @include make-xs-column(4);
+        margin-right: 4%;
+        margin-left: 4%;
+        background-color: rgba(255, 255, 255, 0.55);
+        padding: 40px 30px;
+        @include border(rgba(255, 255, 255, 0.22));
+        text-align: center;
+        min-width: 200px;
+
+        p {
+            @include regularText($colorRegularFont: #000, $fontRegularSize: 1.87rem)
+        }
     }
 
     &-timer {
         display: block;
-        float: left;
+        @extend .center-block;
+        margin-top: 140px;
+        padding-bottom: 48px;
+        @include regularText($colorRegularFont: #000, $fontRegularSize: 2.18rem);
 
         div {
+            font-size: 1.25rem;
             float: left;
             margin-right: 20px;
+            @extend .center-block;
         }
     }
 
     &-form {
         input:not([type="submit"]) {
-            width: 80%;
+            width: 90%;
+            min-width: 110px;
             padding: 2% 1%;
+            margin-bottom: 60px;
             @include border($colorBorder, $borderRadius: 10px);
+            font-size: 1.25rem;
             box-shadow: 0 2px 4px 0;
+            @extend .center-block;
         }
 
         .stock-form__btn {
-          @include border($colorBorder, $borderRadius: 30px, $borderWidth: 0px)
-          width: 50%;
-          padding: 20px 10px;
-        }
-
-        .btn {
-            @include border($colorBorder);
-            box-shadow: none;
-            background-color: transparent;
+            @include border($colorBorder, $borderRadius: 30px, $borderWidth: 0px) min-width: 50%;
+            padding: 5%;
+            @extend .center-block;
+            font-size: 1.25rem;
+            background-color: $colorBorder;
 
             &:hover {
                 box-shadow: 0 2px 4px 0;
             }
+        }
+
+        .btn {
+            box-shadow: none;
         }
     }
 }
@@ -253,11 +296,43 @@ nav {
 .about {
     @include clearfix;
     margin-top: 30px;
+
     &-col-left {
         @include make-xs-column(7);
         @include regularText($fontRegularSize: 1rem);
+
         h3 {
             @include boldText($fontBoldSize: 2.8rem);
+            margin-bottom: 50px;
+        }
+
+        p {
+            margin-bottom: 36px;
+        }
+
+        &__list-title {
+            text-transform: uppercase;
+            @include boldText($fontBoldSize: 1rem);
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 36px;
+
+            li {
+                margin-top: 36px;
+                position: relative;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 9px;
+                    left: -36px;
+                    width: 27px;
+                    height: 1px;
+                    border-bottom: 2px solid red;
+                }
+            }
         }
     }
 
@@ -265,10 +340,30 @@ nav {
         @include make-xs-column(5);
         text-align: center;
 
+        .about__slogan {
+            @include boldText($fontBoldSize: 1rem);
+            margin-bottom: 30px;
+        }
+
         img {
             @extend .center-block;
             max-width: 220px;
             width: 40%;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                display: inline-block;
+                width: 30%;
+                text-align: left;
+
+                p:first-of-type {
+                    @include boldText($fontBoldSize: 2.87rem);
+                }
+            }
         }
     }
 }
@@ -282,7 +377,8 @@ nav {
         display: block;
         list-style: none;
         padding: 0;
-
+        margin-bottom: 20px;
+        @include clearfix();
         li {
             position: relative;
             text-align: center;
@@ -301,20 +397,26 @@ nav {
 
     .btn-gallery {
         float: right;
+        background-color: $colorBorder;
+        box-shadow: 0 2px 20px 0 rgba(0,0,0,0.3);
+        border-radius: 30px;
     }
 }
 //################## Блок отзывов ######################
 
 .reviews {
+  padding-bottom: 30px;
     ul {
         list-style: none;
         display: block;
         padding: 0;
         @include center-block;
-        @extend .clearfix;
-
+        @include clearfix();
         li {
-            @extend .clearfix;
+            @include clearfix();
+            @include boldText($fontBoldSize: 1.5rem);
+            position: relative;
+            padding: 0 65px;
 
             img {
                 @include make-xs-column(3);
@@ -332,13 +434,41 @@ nav {
                     }
                 }
             }
+
+            .review {
+                &::before {
+                    content: "";
+                    position: absolute;
+                    border-bottom: 1px solid grey;
+                    border-left: 1px solid grey;
+                    width: 40px;
+                    height: 40px;
+                    top: 50%;
+                    left: 0;
+                    transform: rotate(45deg);
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    border-bottom: 1px solid grey;
+                    border-left: 1px solid grey;
+                    width: 40px;
+                    height: 40px;
+                    top: 50%;
+                    right: 0;
+                    transform: rotate(225deg);
+                }
+            }
         }
     }
 }
 //################## Блок работников ######################
 
 .workers {
-    padding-top: 20px;
+    background-color: #fff;
+    
+    padding-bottom: 30px;
 
     ul {
         list-style: none;
@@ -356,7 +486,6 @@ nav {
             box-shadow: 0 0 29px 0;
             padding: 30px 20px;
 
-
             img {
                 width: 100%;
                 border-radius: 50%;
@@ -364,13 +493,11 @@ nav {
             }
 
             .worker__name {
-              @include regularText($fontRegularSize:1.75rem);
+                @include regularText($fontRegularSize:1.75rem);
             }
 
             .worker__description {
-              @include regularText($fontRegularSize:1.3rem);
-
-
+                @include regularText($fontRegularSize:1.3rem);
             }
         }
     }
@@ -389,7 +516,8 @@ nav {
         padding: 20px;
         @include border($colorBorder);
 
-        &__title, &__phone p {
+        &__phone p,
+        &__title {
             @include regularText($fontRegularSize: 0.6rem);
         }
 
@@ -424,34 +552,37 @@ nav {
     display: flex;
     justify-content: space-around;
     flex-direction: row;
-    margin-top: 42px;
-    margin-bottom: 42px;
+    padding-top: 42px;
+    padding-bottom: 42px;
+    background-color: #fff;
 
     .social {
         @include make-xs-column(4);
-
         ul {
             padding: 0;
-
             list-style: none;
-
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
             li {
-
                 width: 47px;
                 height: 47px;
                 border-radius: 50%;
                 background-color: grey;
                 display: inline-block;
+                margin-right: 10px;
             }
 
-          .social-btn {
-            background-repeat: no-repeat;
-            background-position: center;
-            opacity: 0.7;
-            &:hover {
-              opacity: 0.9;
+            .social-btn {
+                background-repeat: no-repeat;
+                background-position: center;
+                opacity: 0.7;
+
+                &:hover {
+                    opacity: 0.9;
+                }
             }
-          }
+
             .social-btn__vk {
                 background-image: url("../img/vk-icon.png");
             }
@@ -469,25 +600,47 @@ nav {
     .ad {
         @include make-xs-column(4);
         text-align: center;
+
         p:first-of-type {
-          @include boldText($fontBoldSize: 1.31rem);
+            @include boldText($fontBoldSize: 1.31rem);
         }
+
         p {
-          @include boldText($fontBoldSize: 0.6rem);
+            @include boldText($fontBoldSize: 0.6rem);
         }
     }
 
     .delivery {
         @include make-xs-column(4);
         @include regularText($fontRegularSize: 0.9rem);
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
         input[type="email"] {
-          background-color: transparent;
-          border: none;
-          border-bottom: 2px solid lightgrey;
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid lightgrey;
         }
+
         .delivery-btn {
-          background-color: transparent;
-          border: none;
+            background-color: transparent;
+            border: none;
+            width: 20px;
+            position: relative;
+
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            border-bottom: 1px solid grey;
+            border-left: 1px solid grey;
+            width: 10px;
+            height: 10px;
+            top: 0;
+            right: -10%;
+            transform: rotate(225deg);
         }
     }
 }
