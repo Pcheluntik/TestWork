@@ -19,7 +19,7 @@
       <!--Блок логотипа-->
       <div class="navigation">
         <div class="logo">
-          <img src="img\logotype.svg" alt="Название компании" width=170 height=104>
+          <img src="img/logotype.svg" alt="Название компании" width=170 height=104>
         </div>
 
         <!--Блок навигации-->
@@ -198,7 +198,7 @@
         <div class="about-col-left">
 
           <!--Заголовок-->
-          <h3>Мы — маленькие, но гордые минские бухгалтеры.</h2>
+          <h3>Мы — маленькие, но гордые минские бухгалтеры.</h3>
 
           <!--Описание компании-->
           <p>Исповедуем принципы минимализма и чистоты. Ставим математический расчет превыше креатива. Работаем не покладая рук, как роботы.</p>
@@ -262,43 +262,36 @@
             <ul>
 
               <li>
-                <a href="">Название работы</a>
-                <img src="img/gallery1.jpg" alt="Миниатюра" width=287 height=287>
+                <a href=""><img src="img/gallery1.jpg" alt="Миниатюра" width=287 height=287></a>
+
               </li>
 
               <li>
-                <a href="">Название работы</a>
-                <img src="img/gallery2.jpg" alt="Миниатюра" width=287 height=287>
+                  <a href=""><img src="img/gallery2.jpg" alt="Миниатюра" width=287 height=287></a>
               </li>
 
               <li>
-                <a href="">Название работы</a>
-                <img src="img/gallery1.jpg" alt="Миниатюра" width=287 height=287>
+                  <a href=""><img src="img/gallery1.jpg" alt="Миниатюра" width=287 height=287></a>
               </li>
 
               <li>
-                <a href="">Название работы</a>
-                <img src="img/gallery2.jpg" alt="Миниатюра" width=287 height=287>
+                <a href=""><img src="img/gallery2.jpg" alt="Миниатюра" width=287 height=287></a>
               </li>
 
               <li>
-                <a href="">Название работы</a>
-                <img src="img/gallery1.jpg" alt="Миниатюра" width=287 height=287>
+                <a href=""><img src="img/gallery1.jpg" alt="Миниатюра" width=287 height=287></a>
               </li>
 
               <li>
-                <a href="">Название работы</a>
-                <img src="img/gallery2.jpg" alt="Миниатюра" width=287 height=287>
+                <a href=""><img src="img/gallery2.jpg" alt="Миниатюра" width=287 height=287></a>
               </li>
 
               <li>
-                <a href="">Название работы</a>
-                <img src="img/gallery1.jpg" alt="Миниатюра" width=287 height=287>
+                <a href=""><img src="img/gallery1.jpg" alt="Миниатюра" width=287 height=287></a>
               </li>
 
               <li>
-                <a href="">Название работы</a>
-                <img src="img/gallery2.jpg" alt="Миниатюра" width=287 height=287>
+                <a href=""><img src="img/gallery2.jpg" alt="Миниатюра" width=287 height=287></a>
               </li>
             </ul>
 
@@ -318,8 +311,8 @@
           <li>
             <div class="review">
               <img src="img/gallery1.jpg" alt="Фотография персонажа 1" width="330" height="330">
-              <div class="review-col"
-                <p class="review-col__text">1У меня были проблемы с налоговой из-за невыплат по алиментам в течение 30 лет. Меня спасли от разорения буквально за полчаса! Чудесные люди, прекрасная компания. Все дружелюбные и симпатичные. Буду обращаться к ним постоянно, днем и ночью, зимой и летом</p>
+              <div class="review-col">
+                <p class="review-col__text"> 1У меня были проблемы с налоговой из-за невыплат по алиментам в течение 30 лет. Меня спасли от разорения буквально за полчаса! Чудесные люди, прекрасная компания. Все дружелюбные и симпатичные. Буду обращаться к ним постоянно, днем и ночью, зимой и летом</p>
                 <p class="review-col__author">
                   Анастасия,<br> индивидуальный предприниматель</p>
                 </div>
@@ -374,9 +367,10 @@
           <h2>Как нас найти</h2>
         </div>
 
-        <img class="map-no-js" src="img/mapmark.jpg" alt="Карта" width="1200" height="429">
-        <div class="map-google" id="map-google"></div>
-
+        <div class="map-image">
+          <img class="map-no-js" src="img/mapmark.jpg" alt="Карта" width="1200" height="429">
+          <div class="map-google" id="map-google"></div>
+        </div>
         <!--Контакты на карте-->
         <div class="map-contacts">
           <p class="map-contacts__title">
@@ -406,7 +400,7 @@
 
   <footer>
     <div class="container-fluid">
-      <div class="footer-col"
+      <div class="footer-col">
         <!--#########################  Кнопки соц.сетей  #######################-->
         <section class="social">
           <ul>
@@ -435,7 +429,8 @@
           <form>
             <label for="delivery-form__email">Подписаться на рассылку</label>
             <input type="email" id="delivery-form__email" name="delivery-form__email" placeholder="Введите e-mail" required>
-            <input type="submit" class="btn delivery-btn" value="">
+            <label for="delivery-btn"></label>
+            <input type="submit" id="delivery-btn" class="btn delivery-btn" value="">
           </form>
         </section>
       </div>

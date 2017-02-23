@@ -22,6 +22,13 @@ $colorDecorate: #fff200; //миксин для regular текста
     border-radius: #{$borderRadius};
     border-color: #{$colorBorder};
 }
+@mixin flex-row {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    -webkit-flex-flow: row wrap;
+    align-content: flex-start;
+}
 
 html {
     font-size: 16px;
@@ -42,6 +49,7 @@ img {
     @extend .center-block;
     @include clearfix();
     margin-top: 30px;
+    width: 100%;
 
     h2 {
         @include regularText($fontRegularSize: 3rem, $colorRegularFont: #31353e);
@@ -161,18 +169,19 @@ img {
 
 nav {
     ul {
-        width: 5%;
         right: 0;
         top: 0;
         padding: 0;
         margin: -1px 0 0;
         list-style: none;
+        position: fixed;
         z-index: 5;
     }
 
     li {
+        width: 50px;
         padding: 10px;
-        height: auto;
+        height: 50px;
         @include border($colorBorder, $borderWidth: 1px);
         margin-bottom: -1px;
         box-shadow: 0 0 4px 0;
@@ -182,7 +191,7 @@ nav {
 
 .services {
     ul {
-        display: block;
+        @include flex-row();
         list-style: none;
         margin-top: 50px;
 
@@ -190,17 +199,55 @@ nav {
             position: relative;
             @include make-sm-column(3);
             text-align: center;
+            min-width: 220px;
 
             img {
                 width: 180px;
                 height: 180px;
                 @extend .img-circle;
-                border: 10px solid $colorBackground;
-                box-shadow: 0 0 0 10px $colorDecorate;
+                border: 10px solid $colorDecorate;
                 margin-bottom: 20px;
+                text-transform: capitalize;
             }
 
-            &:hover {}
+            &:hover {
+                img {
+                    &:hover {
+                        color: red;
+                    }
+
+                    &::after,
+                    &::before {
+                        top: 0;
+                        left: 0;
+                    }
+
+                    &::before {
+                        border: 2px solid transparent; // We're animating border-color again
+                    }
+
+                    &:hover::before {
+                        border-top-color: red; // Show borders
+                        border-right-color: red;
+                        border-bottom-color: red;
+                        transition:border-top-color 0.15s linear,// Stagger border appearances
+                        border-right-color 0.15s linear 0.10s, border-bottom-color 0.15s linear 0.20s;
+                    }
+
+                    &::after {
+                        border: 0 solid transparent; // Makes border thinner at the edges? I forgot what I was doing
+                    }
+
+                    &:hover::after {
+                        border-top: 2px solid red; // Shows border
+                        border-left-width: 2px; // Solid edges, invisible borders
+                        border-right-width: 2px; // Solid edges, invisible borders
+                        transform: rotate(270deg); // Rotate around circle
+                        transition: transform 0.4s linear 0s, border-left-width 0s linear 0.35s; // Solid edge post-rotation
+                    }
+                }
+                cursor: pointer;
+            }
 
             p {
                 @include regularText($fontRegularSize: 1.4rem);
@@ -224,7 +271,8 @@ nav {
 
     &-left-col {
         @include make-xs-column-offset(1);
-        @include make-xs-column(6);
+        @include make-xs-column(10);
+        @include make-sm-column(6);
         margin-top: 30px;
 
         p {
@@ -233,14 +281,15 @@ nav {
     }
 
     &-right-col {
-        @include make-xs-column(4);
+        @include make-xs-column(10);
+        @include make-sm-column(4);
         margin-right: 4%;
         margin-left: 4%;
         background-color: rgba(255, 255, 255, 0.55);
         padding: 40px 30px;
         @include border(rgba(255, 255, 255, 0.22));
         text-align: center;
-        min-width: 200px;
+        min-width: 240px;
 
         p {
             @include regularText($colorRegularFont: #000, $fontRegularSize: 1.87rem)
@@ -296,9 +345,12 @@ nav {
 .about {
     @include clearfix;
     margin-top: 30px;
+    @include flex-row();
 
     &-col-left {
-        @include make-xs-column(7);
+        @include make-xs-column(12);
+        @include make-sm-column(10);
+        @include make-md-column(7);
         @include regularText($fontRegularSize: 1rem);
 
         h3 {
@@ -337,8 +389,12 @@ nav {
     }
 
     &-col-right {
-        @include make-xs-column(5);
+        @include make-xs-column(12);
+        @include make-sm-column(10);
+        @include make-md-column(5);
+        align-self: center;
         text-align: center;
+
 
         .about__slogan {
             @include boldText($fontBoldSize: 1rem);
@@ -374,29 +430,23 @@ nav {
     @include clearfix();
 
     ul {
-        display: block;
+        @include flex-row();
         list-style: none;
         padding: 0;
         margin-bottom: 20px;
         @include clearfix();
+
         li {
             position: relative;
             text-align: center;
             @include make-sm-column(3);
             padding: 0;
-
-            img {}
-
-            a {
-                position: absolute;
-                top: 50%;
-                left: 25%;
-            }
         }
     }
 
     .btn-gallery {
         float: right;
+        margin-right: 15px;
         background-color: $colorBorder;
         box-shadow: 0 2px 20px 0 rgba(0,0,0,0.3);
         border-radius: 30px;
@@ -405,13 +455,15 @@ nav {
 //################## Блок отзывов ######################
 
 .reviews {
-  padding-bottom: 30px;
+    padding-bottom: 30px;
+
     ul {
         list-style: none;
-        display: block;
+        @include flex-row();
         padding: 0;
-        @include center-block;
+        justify-content: flex-start;
         @include clearfix();
+
         li {
             @include clearfix();
             @include boldText($fontBoldSize: 1.5rem);
@@ -419,11 +471,15 @@ nav {
             padding: 0 65px;
 
             img {
-                @include make-xs-column(3);
+                @include make-sm-column(3);
+                min-width: 250px;
+                max-width: 400px;
             }
 
             .review-col {
-                @include make-xs-column(9);
+                @include make-xs-column(12);
+                @include make-sm-column(12);
+                @include make-md-column(9);
 
                 &__author {
                     float: right;
@@ -467,17 +523,14 @@ nav {
 
 .workers {
     background-color: #fff;
-    
     padding-bottom: 30px;
 
     ul {
         list-style: none;
         padding: 20px 0 0;
         @include clearfix();
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: stretch;
+        @include flex-row();
+        justify-content: space-around;
 
         li {
             @include make-sm-column(3);
@@ -485,6 +538,7 @@ nav {
             background-color: #edeff1;
             box-shadow: 0 0 29px 0;
             padding: 30px 20px;
+            max-width: 400px;
 
             img {
                 width: 100%;
@@ -506,6 +560,15 @@ nav {
 
 .map {
     position: relative;
+
+    .map-image {
+        @extend .img-responsive;
+
+        .map-no-js {
+            width: 100%;
+
+        }
+    }
 
     .map-contacts {
         @include make-xs-column(3);
@@ -541,29 +604,87 @@ nav {
         }
     }
 }
-@media screen and (max-width: 768px) {
-    .map-contacts {
-        position: relative;
+@media screen and (max-width: 900px) {
+    .map {
+        @include flex-row();
+        justify-content: space-around;
+
+        .map-contacts {
+            position: relative;
+            @include make-xs-column(6);
+            border: none;
+            border-radius: 0;
+            top: 0;
+            right: 0;
+        }
+
+        .map-image {
+
+            @include make-xs-column(6);
+            padding-left: 0;
+            padding-right: 0;
+            overflow: hidden;
+
+            img.map-no-js {
+                width: auto;
+                object-fit: cover;
+                object-position: 50% 50%;
+            }
+        }
+    }
+}
+@media screen and (max-width: 777px) {
+    .main-page {
+
+        .main-btn {
+            min-width: 161px;
+
+            margin: 0 auto;
+        }
+    }
+
+    .title {
+      border: none;
+      bottom: 40%;
+      left: 10%;
+    }
+
+    .workers {
+        ul {
+            li {
+                max-width: 100%;
+                margin-left: 25%;
+                margin-right: 25%;
+                margin-bottom: 20px;
+                width: auto;
+            }
+        }
+    }
+
+    .footer-col {
+        .social {
+            order: 3;
+        }
     }
 }
 //################## Футер ######################
 
 .footer-col {
-    display: flex;
+    @include flex-row();
     justify-content: space-around;
-    flex-direction: row;
     padding-top: 42px;
     padding-bottom: 42px;
     background-color: #fff;
 
     .social {
-        @include make-xs-column(4);
+        @include make-xs-column(3);
+        margin-left: 50px;
+        flex-grow: auto;
+
         ul {
             padding: 0;
             list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-direction: row;
+
             li {
                 width: 47px;
                 height: 47px;
@@ -598,7 +719,8 @@ nav {
     }
 
     .ad {
-        @include make-xs-column(4);
+        @include make-xs-column(12);
+        @include make-sm-column(4);
         text-align: center;
 
         p:first-of-type {
@@ -611,16 +733,34 @@ nav {
     }
 
     .delivery {
-        @include make-xs-column(4);
+        @include make-xs-column(12);
+        @include make-sm-column(4);
         @include regularText($fontRegularSize: 0.9rem);
         position: relative;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
+        text-align: center;
+        margin-bottom: 5px;
+
         input[type="email"] {
             background-color: transparent;
             border: none;
             border-bottom: 2px solid lightgrey;
+            padding-right: 10px;
+        }
+
+        label[for="delivery-btn"] {
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                border-bottom: 1px solid lightgrey;
+                border-left: 1px solid lightgrey;
+                width: 10px;
+                height: 10px;
+                top: -5px;
+                left: -20px;
+                transform: rotate(225deg);
+            }
         }
 
         .delivery-btn {
@@ -628,19 +768,6 @@ nav {
             border: none;
             width: 20px;
             position: relative;
-
-        }
-
-        &::after {
-            content: "";
-            position: absolute;
-            border-bottom: 1px solid grey;
-            border-left: 1px solid grey;
-            width: 10px;
-            height: 10px;
-            top: 0;
-            right: -10%;
-            transform: rotate(225deg);
         }
     }
 }
