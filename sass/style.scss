@@ -822,6 +822,7 @@ nav {
     .services {
         ul {
             margin-top: 20px;
+            padding-left: 0;
 
             li {
                 @include center-block();
@@ -916,6 +917,8 @@ nav {
 
         .social {
             margin-left: 0;
+            width: 70%;
+
         }
     }
 }
