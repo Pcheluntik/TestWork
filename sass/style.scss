@@ -179,12 +179,22 @@ nav {
     }
 
     li {
+
         width: 50px;
         padding: 10px;
         height: 50px;
         @include border($colorBorder, $borderWidth: 1px);
         margin-bottom: -1px;
         box-shadow: 0 0 4px 0;
+    }
+
+    li .hover-menu {
+      opacity:0;
+    }
+
+  .main-menu  li:hover .hover-menu {
+	    -webkit-transition:0.25s linear opacity;
+      opacity: 1;
     }
 }
 //####################### Блок услуг ###############################
@@ -197,8 +207,8 @@ nav {
 
         li {
             position: relative;
-            @include make-sm-column(6);
-            @include make-xs-column(3);
+            @include make-sm-column(3);
+            @include make-xs-column(6);
             text-align: center;
             min-width: 220px;
 
@@ -541,16 +551,13 @@ nav {
             padding: 30px 20px;
             max-width: 400px;
 
-            .worker__image {
-              width: 100%;
-              border-radius: 50%;
-              padding-bottom: 25px;
-              
-                img {
-                    object-fit: cover;
-                    object-position: 50% 50%;
-
-                }
+            img {
+                object-fit: cover;
+                object-position: 50% 50%;
+                border-radius: 50%;
+                width: 225px;
+                margin-bottom: 25px;
+                height: 225px;
             }
 
             .worker__name {
@@ -813,16 +820,16 @@ nav {
                 @include boldText($fontBoldSize: 2rem);
                 margin-bottom: 30px;
             }
+        }
 
-            .about-col-right {
-                padding: 0;
+        .about-col-right {
+            padding: 0;
 
-                ul li {
-                    @include regularText($fontRegularSize: 0.9rem);
+            ul li {
+                @include regularText($fontRegularSize: 0.9rem);
 
-                    p:first-of-type {
-                        @include boldText($fontBoldSize: 2rem);
-                    }
+                p:first-of-type {
+                    @include boldText($fontBoldSize: 2rem);
                 }
             }
         }
@@ -878,6 +885,14 @@ nav {
         .map-image {
             @include make-xs-column(12);
             padding: 0;
+        }
+    }
+
+    .footer-col {
+        padding: 10px 0;
+
+        .social {
+            margin-left: 0;
         }
     }
 }

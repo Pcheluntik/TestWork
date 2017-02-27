@@ -5975,6 +5975,13 @@ nav li {
   margin-bottom: -1px;
   box-shadow: 0 0 4px 0; }
 
+nav li .hover-menu {
+  opacity: 0; }
+
+nav .main-menu li:hover .hover-menu {
+  -webkit-transition: 0.25s linear opacity;
+  opacity: 1; }
+
 .services ul {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -5999,7 +6006,7 @@ nav li {
     padding-right: 15px;
     position: relative;
     float: left;
-    width: 25%;
+    width: 50%;
     min-height: 1px;
     padding-left: 15px;
     padding-right: 15px;
@@ -6008,7 +6015,7 @@ nav li {
     @media (min-width: 768px) {
       .services ul li {
         float: left;
-        width: 50%; } }
+        width: 25%; } }
     .services ul li img {
       width: 180px;
       height: 180px;
@@ -6477,13 +6484,13 @@ nav li {
       box-shadow: 0 0 29px 0;
       padding: 30px 20px;
       max-width: 400px; }
-      .workers ul li .worker__image {
-        width: 100%;
+      .workers ul li img {
+        object-fit: cover;
+        object-position: 50% 50%;
         border-radius: 50%;
-        padding-bottom: 25px; }
-        .workers ul li .worker__image img {
-          object-fit: cover;
-          object-position: 50% 50%; }
+        width: 225px;
+        margin-bottom: 25px;
+        height: 225px; }
       .workers ul li .worker__name {
         font-family: "Roboto Regular", "Arial", sans-serif;
         color: #31353e;
@@ -6759,18 +6766,18 @@ nav li {
         color: #31353e;
         line-height: 2.3rem;
         margin-bottom: 30px; }
-      .about-col-left .about-col-right {
-        padding: 0; }
-        .about-col-left .about-col-right ul li {
-          font-family: "Roboto Regular", "Arial", sans-serif;
+    .about .about-col-right {
+      padding: 0; }
+      .about .about-col-right ul li {
+        font-family: "Roboto Regular", "Arial", sans-serif;
+        color: #31353e;
+        font-size: 0.9rem; }
+        .about .about-col-right ul li p:first-of-type {
+          font-family: "Roboto Bold", "Arial", sans-serif;
+          font-weight: bold;
+          font-size: 2rem;
           color: #31353e;
-          font-size: 0.9rem; }
-          .about-col-left .about-col-right ul li p:first-of-type {
-            font-family: "Roboto Bold", "Arial", sans-serif;
-            font-weight: bold;
-            font-size: 2rem;
-            color: #31353e;
-            line-height: 2.3rem; }
+          line-height: 2.3rem; }
   .reviews ul li {
     padding: 0 25px;
     font-family: "Roboto Bold", "Arial", sans-serif;
@@ -6823,4 +6830,8 @@ nav li {
     min-height: 1px;
     padding-left: 15px;
     padding-right: 15px;
-    padding: 0; } }
+    padding: 0; }
+  .footer-col {
+    padding: 10px 0; }
+    .footer-col .social {
+      margin-left: 0; } }
