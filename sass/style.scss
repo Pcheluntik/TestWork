@@ -439,7 +439,7 @@ nav {
         li {
             position: relative;
             text-align: center;
-            @include make-sm-column(2);
+            @include make-sm-column(3);
             @include make-xs-column(6);
             padding: 0;
         }
@@ -535,17 +535,22 @@ nav {
 
         li {
             @include make-xs-column(3);
-            @include make-sm-column(6);
             text-align: center;
             background-color: #edeff1;
             box-shadow: 0 0 29px 0;
             padding: 30px 20px;
             max-width: 400px;
 
-            img {
-                width: 100%;
-                border-radius: 50%;
-                padding-bottom: 25px;
+            .worker__image {
+              width: 100%;
+              border-radius: 50%;
+              padding-bottom: 25px;
+              
+                img {
+                    object-fit: cover;
+                    object-position: 50% 50%;
+
+                }
             }
 
             .worker__name {
@@ -867,6 +872,7 @@ nav {
     .map {
         .map-contacts {
             @include make-xs-column(12);
+            text-align: center;
         }
 
         .map-image {

@@ -6319,7 +6319,7 @@ nav li {
       @media (min-width: 768px) {
         .gallery ul li {
           float: left;
-          width: 16.66667%; } }
+          width: 25%; } }
   .gallery .btn-gallery {
     float: right;
     margin-right: 15px;
@@ -6472,23 +6472,18 @@ nav li {
       min-height: 1px;
       padding-left: 15px;
       padding-right: 15px;
-      position: relative;
-      min-height: 1px;
-      padding-left: 15px;
-      padding-right: 15px;
       text-align: center;
       background-color: #edeff1;
       box-shadow: 0 0 29px 0;
       padding: 30px 20px;
       max-width: 400px; }
-      @media (min-width: 768px) {
-        .workers ul li {
-          float: left;
-          width: 50%; } }
-      .workers ul li img {
+      .workers ul li .worker__image {
         width: 100%;
         border-radius: 50%;
         padding-bottom: 25px; }
+        .workers ul li .worker__image img {
+          object-fit: cover;
+          object-position: 50% 50%; }
       .workers ul li .worker__name {
         font-family: "Roboto Regular", "Arial", sans-serif;
         color: #31353e;
@@ -6819,7 +6814,8 @@ nav li {
     width: 100%;
     min-height: 1px;
     padding-left: 15px;
-    padding-right: 15px; }
+    padding-right: 15px;
+    text-align: center; }
   .map .map-image {
     position: relative;
     float: left;
