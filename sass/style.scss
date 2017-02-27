@@ -797,6 +797,12 @@ nav {
     .footer-col {
         .social {
             order: 3;
+
+                margin-left: 0;
+                text-align: center;
+                width: 70%;
+
+
         }
     }
 }
@@ -915,10 +921,6 @@ nav {
     .footer-col {
         padding: 10px 0;
 
-        .social {
-            margin-left: 0;
-            width: 70%;
 
-        }
     }
 }

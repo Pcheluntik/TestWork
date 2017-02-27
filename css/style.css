@@ -6746,7 +6746,10 @@ nav .main-menu li:hover .hover-menu {
   .footer-col .social {
     -webkit-order: 3;
     -ms-flex-order: 3;
-    order: 3; } }
+    order: 3;
+    margin-left: 0;
+    text-align: center;
+    width: 70%; } }
 
 @media screen and (max-width: 500px) {
   .title h1 {
@@ -6853,7 +6856,4 @@ nav .main-menu li:hover .hover-menu {
     padding-right: 15px;
     padding: 0; }
   .footer-col {
-    padding: 10px 0; }
-    .footer-col .social {
-      margin-left: 0;
-      width: 70%; } }
+    padding: 10px 0; } }
