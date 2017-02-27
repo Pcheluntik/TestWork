@@ -5976,11 +5976,13 @@ nav li {
   box-shadow: 0 0 4px 0; }
 
 nav li .hover-menu {
-  opacity: 0; }
+  opacity: 0;
+  display: none; }
 
 nav .main-menu li:hover .hover-menu {
   -webkit-transition: 0.25s linear opacity;
-  opacity: 1; }
+  opacity: 1;
+  display: block; }
 
 .services ul {
   display: -webkit-flex;
@@ -6483,7 +6485,9 @@ nav .main-menu li:hover .hover-menu {
       background-color: #edeff1;
       box-shadow: 0 0 29px 0;
       padding: 30px 20px;
-      max-width: 400px; }
+      max-width: 400px;
+      min-width: 265px;
+      margin-top: 5px; }
       .workers ul li img {
         object-fit: cover;
         object-position: 50% 50%;
@@ -6666,6 +6670,20 @@ nav .main-menu li:hover .hover-menu {
       width: 20px;
       position: relative; }
 
+@media screen and (max-width: 1200px) {
+  .reviews ul li .review-col {
+    position: relative;
+    float: left;
+    width: 100%;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center; }
+  .reviews ul li img {
+    display: block;
+    margin: 0 auto;
+    float: none; } }
+
 @media screen and (max-width: 900px) {
   .map {
     display: -webkit-flex;
@@ -6753,6 +6771,8 @@ nav .main-menu li:hover .hover-menu {
       display: block;
       margin-left: auto;
       margin-right: auto; }
+  .stock .stock-timer {
+    margin-top: 10px; }
   .about {
     margin-top: 20px; }
     .about-col-left {

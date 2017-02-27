@@ -190,11 +190,13 @@ nav {
 
     li .hover-menu {
       opacity:0;
+      display: none;
     }
 
   .main-menu  li:hover .hover-menu {
 	    -webkit-transition:0.25s linear opacity;
       opacity: 1;
+      display: block;
     }
 }
 //####################### Блок услуг ###############################
@@ -550,7 +552,8 @@ nav {
             box-shadow: 0 0 29px 0;
             padding: 30px 20px;
             max-width: 400px;
-
+            min-width: 265px;
+            margin-top: 5px;
             img {
                 object-fit: cover;
                 object-position: 50% 50%;
@@ -721,6 +724,22 @@ nav {
         }
     }
 }
+
+@media screen and (max-width: 1200px) {
+
+  .reviews ul li {
+  .review-col {
+    @include make-xs-column(12);
+    text-align: center;
+  }
+  img{
+      display: block;
+      margin: 0 auto;
+      float: none;
+  }
+}
+}
+
 @media screen and (max-width: 900px) {
     .map {
         @include flex-row();
@@ -809,7 +828,11 @@ nav {
             }
         }
     }
-
+.stock {
+  .stock-timer {
+    margin-top: 10px;
+  }
+}
     .about {
         margin-top: 20px;
 
