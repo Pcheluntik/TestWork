@@ -197,7 +197,8 @@ nav {
 
         li {
             position: relative;
-            @include make-sm-column(3);
+            @include make-sm-column(6);
+            @include make-xs-column(3);
             text-align: center;
             min-width: 220px;
 
@@ -395,7 +396,6 @@ nav {
         align-self: center;
         text-align: center;
 
-
         .about__slogan {
             @include boldText($fontBoldSize: 1rem);
             margin-bottom: 30px;
@@ -439,7 +439,8 @@ nav {
         li {
             position: relative;
             text-align: center;
-            @include make-sm-column(3);
+            @include make-sm-column(2);
+            @include make-xs-column(6);
             padding: 0;
         }
     }
@@ -533,7 +534,8 @@ nav {
         justify-content: space-around;
 
         li {
-            @include make-sm-column(3);
+            @include make-xs-column(3);
+            @include make-sm-column(6);
             text-align: center;
             background-color: #edeff1;
             box-shadow: 0 0 29px 0;
@@ -566,7 +568,6 @@ nav {
 
         .map-no-js {
             width: 100%;
-
         }
     }
 
@@ -601,69 +602,6 @@ nav {
             & a {
                 word-break: break-all;
             }
-        }
-    }
-}
-@media screen and (max-width: 900px) {
-    .map {
-        @include flex-row();
-        justify-content: space-around;
-
-        .map-contacts {
-            position: relative;
-            @include make-xs-column(6);
-            border: none;
-            border-radius: 0;
-            top: 0;
-            right: 0;
-        }
-
-        .map-image {
-
-            @include make-xs-column(6);
-            padding-left: 0;
-            padding-right: 0;
-            overflow: hidden;
-
-            img.map-no-js {
-                width: auto;
-                object-fit: cover;
-                object-position: 50% 50%;
-            }
-        }
-    }
-}
-@media screen and (max-width: 777px) {
-    .main-page {
-
-        .main-btn {
-            min-width: 161px;
-
-            margin: 0 auto;
-        }
-    }
-
-    .title {
-      border: none;
-      bottom: 40%;
-      left: 10%;
-    }
-
-    .workers {
-        ul {
-            li {
-                max-width: 100%;
-                margin-left: 25%;
-                margin-right: 25%;
-                margin-bottom: 20px;
-                width: auto;
-            }
-        }
-    }
-
-    .footer-col {
-        .social {
-            order: 3;
         }
     }
 }
@@ -768,6 +706,172 @@ nav {
             border: none;
             width: 20px;
             position: relative;
+        }
+    }
+}
+@media screen and (max-width: 900px) {
+    .map {
+        @include flex-row();
+        justify-content: space-around;
+
+        .map-contacts {
+            position: relative;
+            @include make-xs-column(6);
+            border: none;
+            border-radius: 0;
+            top: 0;
+            right: 0;
+        }
+
+        .map-image {
+            @include make-xs-column(6);
+            padding-left: 0;
+            padding-right: 0;
+            overflow: hidden;
+
+            img.map-no-js {
+                width: auto;
+                object-fit: cover;
+                object-position: 50% 50%;
+            }
+        }
+    }
+}
+@media screen and (max-width: 777px) {
+    .main-page {
+        .main-btn {
+            min-width: 161px;
+            margin: 0 auto;
+        }
+    }
+
+    .title {
+        border: none;
+        bottom: 40%;
+        left: 10%;
+    }
+
+    .workers {
+        ul {
+            li {
+                max-width: 100%;
+                margin-left: 25%;
+                margin-right: 25%;
+                margin-bottom: 20px;
+                width: auto;
+            }
+        }
+    }
+
+    .footer-col {
+        .social {
+            order: 3;
+        }
+    }
+}
+@media screen and (max-width: 500px) {
+    .title {
+        h1 {
+            text-align: center;
+            min-width: 200px;
+            @include regularText($fontRegularSize: 1rem, $colorRegularFont: #fff);
+
+            &::first-line {
+                @include boldText($colorBoldFont: #fff,$fontBoldSize: 2rem );
+            }
+        }
+    }
+
+    .undertitle {
+        h2 {
+            @include regularText($fontRegularSize: 2.1rem, $colorRegularFont: #31353e);
+        }
+    }
+
+    .services {
+        ul {
+            margin-top: 20px;
+
+            li {
+                @include center-block();
+            }
+        }
+    }
+
+    .about {
+        margin-top: 20px;
+
+        &-col-left {
+            @include regularText($fontRegularSize: 1rem);
+
+            h3 {
+                @include boldText($fontBoldSize: 2rem);
+                margin-bottom: 30px;
+            }
+
+            .about-col-right {
+                padding: 0;
+
+                ul li {
+                    @include regularText($fontRegularSize: 0.9rem);
+
+                    p:first-of-type {
+                        @include boldText($fontBoldSize: 2rem);
+                    }
+                }
+            }
+        }
+    }
+
+    .reviews {
+        ul {
+            li {
+                padding: 0 25px;
+                @include boldText($fontBoldSize: 2rem);
+
+                img {
+                    width: 80%;
+                    min-width: 100px;
+                    @include center-block();
+                }
+
+                .review {
+                    .review-col {
+                        padding: 0;
+
+                        .review-col__text {
+                            @include boldText($fontBoldSize: 1rem);
+                        }
+
+                        &__author {
+                            @include boldText($fontBoldSize: 0.7rem);
+
+                            &::first-line {
+                                @include boldText($fontBoldSize: 1rem);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .workers {
+        ul li {
+            margin-left: 5%;
+            margin-right: 5%;
+            box-shadow: 0 0 10px 0;
+        }
+    }
+
+    .map {
+        .map-contacts {
+            @include make-xs-column(12);
+        }
+
+        .map-image {
+            @include make-xs-column(12);
+            padding: 0;
         }
     }
 }
