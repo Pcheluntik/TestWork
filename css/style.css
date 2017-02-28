@@ -5962,35 +5962,47 @@ img {
 .main-menu {
   float: right; }
 
-nav ul {
+nav .menu-btn {
+  display: block;
   right: 0;
   top: 0;
   padding: 0;
   margin: -1px 0 0;
-  list-style: none;
-  position: fixed;
-  z-index: 5; }
-
-nav li {
   width: 50px;
   padding: 10px;
   height: 50px;
   border-width: 1px;
   border-style: solid;
-  border-radius: 10px;
+  border-radius: 0;
   border-color: #fff;
   margin-bottom: -1px;
-  box-shadow: 0 0 4px 0; }
+  box-shadow: inset 0 0 4px 0;
+  position: fixed;
+  z-index: 5; }
 
-nav li .hover-menu {
-  opacity: 0;
-  display: none;
-  margin-top: 50px; }
-
-nav .main-menu li:hover .hover-menu {
-  -webkit-transition: 0.25s linear opacity;
+nav .main-menu {
   opacity: 1;
-  display: block; }
+  display: block;
+  padding: 0;
+  list-style: none;
+  position: fixed;
+  top: -1px;
+  right: 0;
+  height: auto; }
+  nav .main-menu li {
+    width: 50px;
+    padding: 10px;
+    height: 50px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0;
+    border-color: #fff;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-bottom: -2px;
+    box-shadow: inset 0 0 4px 0; }
+    nav .main-menu li:hover {
+      box-shadow: inset 0 0 6px 0 rgba(255, 255, 255, 0.5);
+      background-color: rgba(0, 0, 0, 0.1); }
 
 .services ul {
   display: -webkit-flex;
@@ -6021,7 +6033,8 @@ nav .main-menu li:hover .hover-menu {
     padding-left: 15px;
     padding-right: 15px;
     text-align: center;
-    min-width: 220px; }
+    min-width: 220px;
+    cursor: pointer; }
     @media (min-width: 768px) {
       .services ul li {
         float: left;
@@ -6033,38 +6046,18 @@ nav .main-menu li:hover .hover-menu {
       margin-bottom: 20px;
       text-transform: capitalize; }
     .services ul li:hover {
-      cursor: pointer; }
-      .services ul li:hover img:hover {
-        color: red; }
-      .services ul li:hover img::after, .services ul li:hover img::before {
-        top: 0;
-        left: 0; }
-      .services ul li:hover img::before {
-        border: 2px solid transparent; }
-      .services ul li:hover img:hover::before {
-        border-top-color: red;
-        border-right-color: red;
-        border-bottom-color: red;
-        transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s; }
-      .services ul li:hover img::after {
-        border: 0 solid transparent; }
-      .services ul li:hover img:hover::after {
-        border-top: 2px solid red;
-        border-left-width: 2px;
-        border-right-width: 2px;
-        -webkit-transform: rotate(270deg);
-        -ms-transform: rotate(270deg);
-        transform: rotate(270deg);
-        transition: border-left-width 0s linear 0.35s, -webkit-transform 0.4s linear 0s;
-        transition: transform 0.4s linear 0s, border-left-width 0s linear 0.35s;
-        transition: transform 0.4s linear 0s, border-left-width 0s linear 0.35s, -webkit-transform 0.4s linear 0s; }
-    .services ul li p {
-      font-family: "Roboto Regular", "Arial", sans-serif;
-      color: #31353e;
-      font-size: 1.4rem;
-      word-break: break-all; }
-    .services ul li .btn {
-      visibility: hidden; }
+      border-top-color: #0eb7da;
+      border-right-color: #0eb7da;
+      border-bottom-color: #0eb7da;
+      -webkit-transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s;
+      transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s; }
+  .services ul p {
+    font-family: "Roboto Regular", "Arial", sans-serif;
+    color: #31353e;
+    font-size: 1.4rem;
+    word-break: break-all; }
+  .services ul .btn {
+    visibility: hidden; }
 
 .stock {
   background-image: url("../img/stock.jpg");
@@ -6286,7 +6279,8 @@ nav .main-menu li:hover .hover-menu {
       .about-col-right ul li {
         display: inline-block;
         width: 30%;
-        text-align: left; }
+        text-align: left;
+        min-height: 98px; }
         .about-col-right ul li p:first-of-type {
           font-family: "Roboto Bold", "Arial", sans-serif;
           font-weight: bold;
@@ -6797,6 +6791,33 @@ nav .main-menu li:hover .hover-menu {
     font-family: "Roboto Regular", "Arial", sans-serif;
     color: #31353e;
     font-size: 2.1rem; }
+  nav {
+    z-index: 5; }
+    nav .menu-btn {
+      display: block;
+      background-color: rgba(255, 255, 255, 0.5); }
+      nav .menu-btn .lines {
+        border-bottom: 17px double black;
+        border-top: 6px solid black;
+        content: "";
+        height: 5px;
+        width: 30px; }
+    nav .main-menu {
+      display: none; }
+    nav .menu-btn:hover {
+      background-color: transparent;
+      box-shadow: none;
+      color: transparent;
+      border: none; }
+      nav .menu-btn:hover .lines {
+        border: none; }
+      nav .menu-btn:hover .main-menu {
+        -webkit-transition: 0.25s linear opacity;
+        opacity: 1;
+        display: block; }
+        nav .menu-btn:hover .main-menu li:hover {
+          box-shadow: inset 0 0 6px 0 rgba(255, 255, 255, 0.5);
+          background-color: rgba(0, 0, 0, 0.1); }
   .services ul {
     margin-top: 20px;
     padding-left: 0; }

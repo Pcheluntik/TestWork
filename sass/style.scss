@@ -163,6 +163,7 @@ img {
 
     &:hover {
         @include border(rgba(192, 192, 192, 0.8));
+
         a {
             color: rgba(192, 192, 192, 0.8);
         }
@@ -175,36 +176,49 @@ img {
 }
 
 nav {
-    ul {
+    .menu-btn {
+        display: block;
         right: 0;
         top: 0;
         padding: 0;
         margin: -1px 0 0;
-        list-style: none;
+        width: 50px;
+        padding: 10px;
+        height: 50px;
+        @include border($colorBorder, $borderWidth: 1px, $borderRadius: 0);
+        margin-bottom: -1px;
+        box-shadow: inset 0 0 4px 0;
         position: fixed;
         z-index: 5;
     }
 
-    li {
-        width: 50px;
-        padding: 10px;
-        height: 50px;
-        @include border($colorBorder, $borderWidth: 1px);
-        margin-bottom: -1px;
-        box-shadow: 0 0 4px 0;
-    }
-
-    li .hover-menu {
-        opacity: 0;
-        display: none;
-        margin-top: 50px;
-    }
-
-    .main-menu li:hover .hover-menu {
-        -webkit-transition: 0.25s linear opacity;
+    .main-menu {
         opacity: 1;
         display: block;
+        padding: 0;
+        list-style: none;
+        position: fixed;
+        top: -1px;
+        right: 0;
+        height: auto;
+
+        li {
+            width: 50px;
+            padding: 10px;
+            height: 50px;
+            @include border($colorBorder, $borderWidth: 1px, $borderRadius: 0);
+            background-color: rgba(255, 255, 255, 0.5);
+            margin-bottom: -2px;
+            box-shadow: inset 0 0 4px 0;
+            &:hover {
+                box-shadow: inset 0 0 6px 0 rgba(255, 255, 255, 0.5);
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+        }
     }
+
+
+
 }
 //####################### Блок услуг ###############################
 
@@ -231,41 +245,12 @@ nav {
             }
 
             &:hover {
-                img {
-                    &:hover {
-                        color: red;
-                    }
-
-                    &::after,
-                    &::before {
-                        top: 0;
-                        left: 0;
-                    }
-
-                    &::before {
-                        border: 2px solid transparent; // We're animating border-color again
-                    }
-
-                    &:hover::before {
-                        border-top-color: red; // Show borders
-                        border-right-color: red;
-                        border-bottom-color: red;
-                        transition:border-top-color 0.15s linear,// Stagger border appearances
-                        border-right-color 0.15s linear 0.10s, border-bottom-color 0.15s linear 0.20s;
-                    }
-
-                    &::after {
-                        border: 0 solid transparent; // Makes border thinner at the edges? I forgot what I was doing
-                    }
-
-                    &:hover::after {
-                        border-top: 2px solid red; // Shows border
-                        border-left-width: 2px; // Solid edges, invisible borders
-                        border-right-width: 2px; // Solid edges, invisible borders
-                        transform: rotate(270deg); // Rotate around circle
-                        transition: transform 0.4s linear 0s, border-left-width 0s linear 0.35s; // Solid edge post-rotation
-                    }
-                }
+              border-top-color: #0eb7da;
+              border-right-color: #0eb7da;
+              border-bottom-color: #0eb7da;
+              -webkit-transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s;
+              transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s;
+              }
                 cursor: pointer;
             }
 
@@ -279,7 +264,8 @@ nav {
             }
         }
     }
-}
+
+
 //################## Блок специального предложения ######################
 
 .stock {
@@ -359,7 +345,7 @@ nav {
             }
 
             &:active {
-              box-shadow: inset  0  0 2px 4px rgba(100, 100, 100, 1);
+                box-shadow: inset 0 0 2px 4px rgba(100, 100, 100, 1);
             }
         }
 
@@ -442,7 +428,7 @@ nav {
                 display: inline-block;
                 width: 30%;
                 text-align: left;
-
+                min-height: 98px;
                 p:first-of-type {
                     @include boldText($fontBoldSize: 2.87rem);
                 }
@@ -480,11 +466,11 @@ nav {
         border-radius: 30px;
 
         &:hover {
-          box-shadow: 0 2px 20px 0 rgba(0,0,0,0.8);
+            box-shadow: 0 2px 20px 0 rgba(0,0,0,0.8);
         }
 
         &:active {
-          box-shadow: inset  0 2px 10px 0 rgba(0,0,0,0.3);;
+            box-shadow: inset 0 2px 10px 0 rgba(0,0,0,0.3);
         }
     }
 }
@@ -644,14 +630,15 @@ nav {
             }
 
             &:hover {
-              background-color: rgba(165, 20, 0, 0.7);
-              a {
-                text-decoration: none;
-              }
+                background-color: rgba(165, 20, 0, 0.7);
+
+                a {
+                    text-decoration: none;
+                }
             }
 
             &:active {
-              background-color: rgba(220, 42, 42, 0.7);
+                background-color: rgba(220, 42, 42, 0.7);
             }
         }
     }
@@ -734,11 +721,7 @@ nav {
             border: none;
             border-bottom: 2px solid lightgrey;
             padding-right: 10px;
-
-
         }
-
-
 
         label[for="delivery-btn"] {
             position: relative;
@@ -756,17 +739,15 @@ nav {
             }
 
             input[type="email"]:hover {
-              border-bottom: 2px solid grey;
-              color: rgba(0, 0, 0, 1);
+                border-bottom: 2px solid grey;
+                color: rgba(0, 0, 0, 1);
 
-              & label[for="delivery-btn"]::after {
-                border-bottom: 1px solid black;
-                border-left: 1px solid black;
-              }
+                & label[for="delivery-btn"]::after {
+                    border-bottom: 1px solid black;
+                    border-left: 1px solid black;
+                }
             }
         }
-
-
 
         .delivery-btn {
             background-color: transparent;
@@ -869,6 +850,48 @@ nav {
     .undertitle {
         h2 {
             @include regularText($fontRegularSize: 2.1rem, $colorRegularFont: #31353e);
+        }
+    }
+
+    nav {
+      z-index: 5;
+        .menu-btn {
+            display: block;
+            background-color: rgba(255, 255, 255, 0.5);
+            .lines {
+                border-bottom: 17px double black;
+                border-top: 6px solid black;
+                content: "";
+                height: 5px;
+                width: 30px;
+            }
+        }
+
+        .main-menu {
+            display: none;
+        }
+
+        .menu-btn:hover {
+            background-color: transparent;
+            box-shadow: none;
+            color: transparent;
+            border: none;
+
+            .lines {
+                border: none;
+            }
+
+            & .main-menu {
+                -webkit-transition: 0.25s linear opacity;
+                opacity: 1;
+                display: block;
+
+                li:hover {
+                  box-shadow: inset 0 0 6px 0 rgba(255, 255, 255, 0.5);
+                  background-color: rgba(0, 0, 0, 0.1);
+                }
+            }
+
         }
     }
 
