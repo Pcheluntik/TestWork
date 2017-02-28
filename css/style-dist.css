@@ -6794,30 +6794,66 @@ nav .main-menu {
   nav {
     z-index: 5; }
     nav .menu-btn {
+      background-color: rgba(255, 255, 255, 0.5);
+      width: 50px;
+      height: 50px;
+      position: fixed;
+      right: 0;
+      text-align: center; }
+      nav .menu-btn:hover {
+        box-shadow: inset 0 0 6px 0 rgba(255, 255, 255, 0.5); }
+    nav span {
       display: block;
-      background-color: rgba(255, 255, 255, 0.5); }
-      nav .menu-btn .lines {
-        border-bottom: 17px double black;
-        border-top: 6px solid black;
-        content: "";
-        height: 5px;
-        width: 30px; }
+      position: absolute;
+      height: 5px;
+      width: 35px;
+      margin-bottom: -2px;
+      right: 5px;
+      background: #000000;
+      border-radius: 9px;
+      opacity: 1;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
+      -webkit-transition: 0.25s ease-in-out;
+      -moz-transition: 0.25s ease-in-out;
+      -o-transition: 0.25s ease-in-out;
+      transition: 0.25s ease-in-out; }
+    nav span:nth-child(1) {
+      top: 8px; }
+    nav span:nth-child(2) {
+      top: 20px; }
+    nav span:nth-child(3) {
+      top: 32px; }
+    nav:hover span:nth-child(1) {
+      top: 18px;
+      -webkit-transform: rotate(135deg);
+      -moz-transform: rotate(135deg);
+      -o-transform: rotate(135deg);
+      -ms-transform: rotate(135deg);
+      transform: rotate(135deg); }
+    nav:hover span:nth-child(2) {
+      opacity: 0;
+      right: -60px; }
+    nav:hover span:nth-child(3) {
+      top: 18px;
+      -webkit-transform: rotate(-135deg);
+      -moz-transform: rotate(-135deg);
+      -o-transform: rotate(-135deg);
+      -ms-transform: rotate(-135deg);
+      transform: rotate(-135deg); }
     nav .main-menu {
       display: none; }
-    nav .menu-btn:hover {
-      background-color: transparent;
-      box-shadow: none;
-      color: transparent;
-      border: none; }
-      nav .menu-btn:hover .lines {
-        border: none; }
-      nav .menu-btn:hover .main-menu {
-        -webkit-transition: 0.25s linear opacity;
-        opacity: 1;
-        display: block; }
-        nav .menu-btn:hover .main-menu li:hover {
-          box-shadow: inset 0 0 6px 0 rgba(255, 255, 255, 0.5);
-          background-color: rgba(0, 0, 0, 0.1); }
+    nav .menu-btn:hover + .main-menu {
+      margin-top: 48px;
+      -webkit-transition: 0.25s linear opacity;
+      opacity: 1;
+      display: block; }
+      nav .menu-btn:hover + .main-menu li:hover {
+        box-shadow: inset 0 0 6px 0 rgba(255, 255, 255, 0.5);
+        background-color: rgba(0, 0, 0, 0.1); }
   .services ul {
     margin-top: 20px;
     padding-left: 0; }

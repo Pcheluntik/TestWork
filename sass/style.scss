@@ -210,15 +210,13 @@ nav {
             background-color: rgba(255, 255, 255, 0.5);
             margin-bottom: -2px;
             box-shadow: inset 0 0 4px 0;
+
             &:hover {
                 box-shadow: inset 0 0 6px 0 rgba(255, 255, 255, 0.5);
                 background-color: rgba(0, 0, 0, 0.1);
             }
         }
     }
-
-
-
 }
 //####################### Блок услуг ###############################
 
@@ -245,27 +243,25 @@ nav {
             }
 
             &:hover {
-              border-top-color: #0eb7da;
-              border-right-color: #0eb7da;
-              border-bottom-color: #0eb7da;
-              -webkit-transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s;
-              transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s;
-              }
-                cursor: pointer;
+                border-top-color: #0eb7da;
+                border-right-color: #0eb7da;
+                border-bottom-color: #0eb7da;
+                -webkit-transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s;
+                transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s;
             }
+            cursor: pointer;
+        }
 
-            p {
-                @include regularText($fontRegularSize: 1.4rem);
-                word-break: break-all;
-            }
+        p {
+            @include regularText($fontRegularSize: 1.4rem);
+            word-break: break-all;
+        }
 
-            .btn {
-                visibility: hidden;
-            }
+        .btn {
+            visibility: hidden;
         }
     }
-
-
+}
 //################## Блок специального предложения ######################
 
 .stock {
@@ -429,6 +425,7 @@ nav {
                 width: 30%;
                 text-align: left;
                 min-height: 98px;
+
                 p:first-of-type {
                     @include boldText($fontBoldSize: 2.87rem);
                 }
@@ -854,17 +851,75 @@ nav {
     }
 
     nav {
-      z-index: 5;
+        z-index: 5;
+
         .menu-btn {
-            display: block;
+
             background-color: rgba(255, 255, 255, 0.5);
-            .lines {
-                border-bottom: 17px double black;
-                border-top: 6px solid black;
-                content: "";
-                height: 5px;
-                width: 30px;
+            width: 50px;
+            height: 50px;
+            position: fixed;
+            right: 0;
+            text-align: center;
+
+            &:hover {
+              box-shadow: inset 0 0 6px 0 rgba(255, 255, 255, 0.5);
+
             }
+        }
+
+        span {
+            display: block;
+            position: absolute;
+            height: 5px;
+            width: 35px;
+            margin-bottom: -2px;
+            right: 5px;
+            background: #000000;
+            border-radius: 9px;
+            opacity: 1;
+
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+            -webkit-transition: 0.25s ease-in-out;
+            -moz-transition: 0.25s ease-in-out;
+            -o-transition: 0.25s ease-in-out;
+            transition: 0.25s ease-in-out;
+        }
+
+        span:nth-child(1) {
+            top: 8px;
+        }
+
+        span:nth-child(2) {
+            top: 20px;
+        }
+
+        span:nth-child(3) {
+            top: 32px;
+        }
+
+        &:hover span:nth-child(1) {
+            top: 18px;
+            -webkit-transform: rotate(135deg);
+            -moz-transform: rotate(135deg);
+            -o-transform: rotate(135deg);
+            transform: rotate(135deg);
+        }
+
+        &:hover span:nth-child(2) {
+            opacity: 0;
+            right: -60px;
+        }
+
+        &:hover span:nth-child(3) {
+            top: 18px;
+            -webkit-transform: rotate(-135deg);
+            -moz-transform: rotate(-135deg);
+            -o-transform: rotate(-135deg);
+            transform: rotate(-135deg);
         }
 
         .main-menu {
@@ -872,26 +927,17 @@ nav {
         }
 
         .menu-btn:hover {
-            background-color: transparent;
-            box-shadow: none;
-            color: transparent;
-            border: none;
-
-            .lines {
-                border: none;
-            }
-
-            & .main-menu {
+            & + .main-menu {
+              margin-top: 48px;
                 -webkit-transition: 0.25s linear opacity;
                 opacity: 1;
                 display: block;
 
                 li:hover {
-                  box-shadow: inset 0 0 6px 0 rgba(255, 255, 255, 0.5);
-                  background-color: rgba(0, 0, 0, 0.1);
+                    box-shadow: inset 0 0 6px 0 rgba(255, 255, 255, 0.5);
+                    background-color: rgba(0, 0, 0, 0.1);
                 }
             }
-
         }
     }
 
