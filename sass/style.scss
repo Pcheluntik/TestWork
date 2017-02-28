@@ -232,24 +232,74 @@ nav {
             @include make-xs-column(6);
             text-align: center;
             min-width: 220px;
+            padding: 20px 10px;
+            border-radius: 20px;
 
             img {
                 width: 180px;
                 height: 180px;
                 @extend .img-circle;
-                border: 10px solid $colorDecorate;
+                border: 2px solid $colorDecorate;
                 margin-bottom: 20px;
                 text-transform: capitalize;
+                cursor: pointer;
+            }
+        }
+
+        li:hover {
+          position: relative;
+            &::before {
+                content: "";
+                background-color: rgba(0,255,255,0.2);
+                width: 100%;
+                height: 100%;
+                box-shadow: 0 0 10px 0 rgba(100, 100, 100, 1);
+                z-index: 1;
+                position: absolute;
+                padding: 20px 10px;
+                border-radius: 20px;
+                top:-10px;
+                left: 0px;
+                opacity: 1;
+                transition: opacity 0.15s linear;
             }
 
-            &:hover {
+            & > img {
+                position: relative;
+                z-index: 20;
                 border-top-color: #0eb7da;
                 border-right-color: #0eb7da;
                 border-bottom-color: #0eb7da;
-                -webkit-transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s;
-                transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s;
+                border-left-color: #0eb7da;
+                -webkit-transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.5s, border-bottom-color 0.15s linear 0.2s;
+                transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.5s, border-bottom-color 0.15s linear 0.2s;
             }
-            cursor: pointer;
+
+            & > p {
+                position: relative;
+                z-index: 20;
+            }
+
+            &::after {
+                border-top: 2px solid #0eb7da;
+                border-left-width: 2px;
+                border-right-width: 2px;
+                transform: rotate(270deg);
+                -webkit-transition: border-left-width 0s linear 0.35s, -webkit-transform 0.4s linear 0s;
+                transition: border-left-width 0s linear 0.35s, -webkit-transform 0.4s linear 0s;
+                transition: transform 0.4s linear 0s, border-left-width 0s linear 1s;
+                transition: transform 0.4s linear 0s, border-left-width 0s linear 1s, -webkit-transform 0.4s linear 0s;
+            }
+
+            .btn {
+                z-index: 20;
+                visibility: visible;
+                position: relative;
+                &:hover {
+                  background-color: #FFF0EC;
+                  border-color: #FFF0EC;
+                }
+            }
         }
 
         p {
@@ -259,6 +309,9 @@ nav {
 
         .btn {
             visibility: hidden;
+            box-shadow: 0 0 10px 4px rgba(100, 100, 100, 1);
+            background-color: $colorBorder;
+
         }
     }
 }
@@ -854,7 +907,6 @@ nav {
         z-index: 5;
 
         .menu-btn {
-
             background-color: rgba(255, 255, 255, 0.5);
             width: 50px;
             height: 50px;
@@ -863,8 +915,8 @@ nav {
             text-align: center;
 
             &:hover {
-              box-shadow: inset 0 0 6px 0 rgba(255, 255, 255, 0.5);
-
+                box-shadow: inset 0 0 6px 0 rgba(0, 0, 0, 0.5);
+                background-color: rgba(255, 150, 0, 0.5);
             }
         }
 
@@ -878,7 +930,6 @@ nav {
             background: #000000;
             border-radius: 9px;
             opacity: 1;
-
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
             -o-transform: rotate(0deg);
@@ -927,8 +978,8 @@ nav {
         }
 
         .menu-btn:hover {
-            & + .main-menu {
-              margin-top: 48px;
+            & .main-menu {
+                margin-top: 48px;
                 -webkit-transition: 0.25s linear opacity;
                 opacity: 1;
                 display: block;
@@ -938,6 +989,19 @@ nav {
                     background-color: rgba(0, 0, 0, 0.1);
                 }
             }
+        }
+
+        .menu-btn.close:hover {
+            & .main-menu {
+                -webkit-transition: 0.25s linear opacity;
+                opacity: 0;
+                display: none;
+            }
+        }
+
+        ul:hover {
+            display: block;
+            margin-top: 48px;
         }
     }
 

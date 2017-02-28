@@ -6034,7 +6034,8 @@ nav .main-menu {
     padding-right: 15px;
     text-align: center;
     min-width: 220px;
-    cursor: pointer; }
+    padding: 20px 10px;
+    border-radius: 20px; }
     @media (min-width: 768px) {
       .services ul li {
         float: left;
@@ -6042,22 +6043,66 @@ nav .main-menu {
     .services ul li img {
       width: 180px;
       height: 180px;
-      border: 10px solid #fff200;
+      border: 2px solid #fff200;
       margin-bottom: 20px;
-      text-transform: capitalize; }
-    .services ul li:hover {
+      text-transform: capitalize;
+      cursor: pointer; }
+  .services ul li:hover {
+    position: relative; }
+    .services ul li:hover::before {
+      content: "";
+      background-color: rgba(0, 255, 255, 0.2);
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 0 10px 0 #646464;
+      z-index: 1;
+      position: absolute;
+      padding: 20px 10px;
+      border-radius: 20px;
+      top: -10px;
+      left: 0px;
+      opacity: 1;
+      transition: opacity 0.15s linear; }
+    .services ul li:hover > img {
+      position: relative;
+      z-index: 20;
       border-top-color: #0eb7da;
       border-right-color: #0eb7da;
       border-bottom-color: #0eb7da;
-      -webkit-transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s;
-      transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s; }
+      border-left-color: #0eb7da;
+      -webkit-transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.5s, border-bottom-color 0.15s linear 0.2s;
+      transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.5s, border-bottom-color 0.15s linear 0.2s; }
+    .services ul li:hover > p {
+      position: relative;
+      z-index: 20; }
+    .services ul li:hover::after {
+      border-top: 2px solid #0eb7da;
+      border-left-width: 2px;
+      border-right-width: 2px;
+      -webkit-transform: rotate(270deg);
+      -ms-transform: rotate(270deg);
+      transform: rotate(270deg);
+      -webkit-transition: border-left-width 0s linear 0.35s, -webkit-transform 0.4s linear 0s;
+      transition: border-left-width 0s linear 0.35s, -webkit-transform 0.4s linear 0s;
+      transition: border-left-width 0s linear 1s, -webkit-transform 0.4s linear 0s;
+      transition: transform 0.4s linear 0s, border-left-width 0s linear 1s;
+      transition: transform 0.4s linear 0s, border-left-width 0s linear 1s, -webkit-transform 0.4s linear 0s; }
+    .services ul li:hover .btn {
+      z-index: 20;
+      visibility: visible;
+      position: relative; }
+      .services ul li:hover .btn:hover {
+        background-color: #FFF0EC;
+        border-color: #FFF0EC; }
   .services ul p {
     font-family: "Roboto Regular", "Arial", sans-serif;
     color: #31353e;
     font-size: 1.4rem;
     word-break: break-all; }
   .services ul .btn {
-    visibility: hidden; }
+    visibility: hidden;
+    box-shadow: 0 0 10px 4px #646464;
+    background-color: #fff; }
 
 .stock {
   background-image: url("../img/stock.jpg");
@@ -6801,7 +6846,8 @@ nav .main-menu {
       right: 0;
       text-align: center; }
       nav .menu-btn:hover {
-        box-shadow: inset 0 0 6px 0 rgba(255, 255, 255, 0.5); }
+        box-shadow: inset 0 0 6px 0 rgba(0, 0, 0, 0.5);
+        background-color: rgba(255, 150, 0, 0.5); }
     nav span {
       display: block;
       position: absolute;
@@ -6846,14 +6892,21 @@ nav .main-menu {
       transform: rotate(-135deg); }
     nav .main-menu {
       display: none; }
-    nav .menu-btn:hover + .main-menu {
+    nav .menu-btn:hover .main-menu {
       margin-top: 48px;
       -webkit-transition: 0.25s linear opacity;
       opacity: 1;
       display: block; }
-      nav .menu-btn:hover + .main-menu li:hover {
+      nav .menu-btn:hover .main-menu li:hover {
         box-shadow: inset 0 0 6px 0 rgba(255, 255, 255, 0.5);
         background-color: rgba(0, 0, 0, 0.1); }
+    nav .menu-btn.close:hover .main-menu {
+      -webkit-transition: 0.25s linear opacity;
+      opacity: 0;
+      display: none; }
+    nav ul:hover {
+      display: block;
+      margin-top: 48px; }
   .services ul {
     margin-top: 20px;
     padding-left: 0; }
