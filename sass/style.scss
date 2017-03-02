@@ -224,7 +224,7 @@ nav {
     ul {
         @include flex-row();
         list-style: none;
-        margin-top: 50px;
+        margin-top: 10px;
         text-align: center;
 
         li {
@@ -292,7 +292,7 @@ nav {
                 }
 
                 .btn {
-                  opacity: 1;
+                    opacity: 1;
                     transition: 0.5s;
                     z-index: 20;
                     visibility: visible;
@@ -317,7 +317,7 @@ nav {
         }
 
         .btn {
-          opacity: 0;
+            opacity: 0;
             visibility: hidden;
             box-shadow: 0 0 10px 4px rgba(100, 100, 100, 1);
             background-color: $colorBorder;
@@ -1050,6 +1050,7 @@ nav {
             position: fixed;
             right: 0;
             text-align: center;
+            opacity: 1;
 
             &:hover {
                 box-shadow: inset 0 0 6px 0 rgba(0, 0, 0, 0.5);
@@ -1136,62 +1137,62 @@ nav {
             }
         }
 
-        .menu-btn.close:active {
-          box-shadow: none;
-          background-color: rgba(255, 255, 255, 0.5);
+        .menu-btn.close:hover {
+            box-shadow: none;
+            background-color: rgba(255, 255, 255, 0.5);
 
-          span {
-              display: block;
-              position: absolute;
-              height: 5px;
-              width: 35px;
-              margin-bottom: -2px;
-              right: 5px;
-              background: #000000;
-              border-radius: 9px;
-              opacity: 1;
-              -webkit-transform: rotate(0deg);
-              -moz-transform: rotate(0deg);
-              -o-transform: rotate(0deg);
-              transform: rotate(0deg);
-              -webkit-transition: 0.25s ease-in-out;
-              -moz-transition: 0.25s ease-in-out;
-              -o-transition: 0.25s ease-in-out;
-              transition: 0.25s ease-in-out;
-          }
+            span {
+                display: block;
+                position: absolute;
+                height: 5px;
+                width: 35px;
+                margin-bottom: -2px;
+                right: 5px;
+                background: #000000;
+                border-radius: 9px;
+                opacity: 1;
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+                -webkit-transition: 0.25s ease-in-out;
+                -moz-transition: 0.25s ease-in-out;
+                -o-transition: 0.25s ease-in-out;
+                transition: 0.25s ease-in-out;
+            }
 
-          span:nth-child(1) {
-              top: 8px;
-          }
+            span:nth-child(1) {
+                top: 8px;
+            }
 
-          span:nth-child(2) {
-              top: 20px;
-          }
+            span:nth-child(2) {
+                top: 20px;
+            }
 
-          span:nth-child(3) {
-              top: 32px;
-          }
+            span:nth-child(3) {
+                top: 32px;
+            }
 
-          &:hover span:nth-child(1) {
-              top: 8px;
-              -webkit-transform: rotate(0deg);
-              -moz-transform: rotate(0deg);
-              -o-transform: rotate(0deg);
-              transform: rotate(0deg);
-          }
+             span:nth-child(1) {
+                top: 8px;
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
 
-          &:hover span:nth-child(2) {
-              opacity: 1;
-              right: 5px;
-          }
+             span:nth-child(2) {
+                opacity: 1;
+                right: 5px;
+            }
 
-          &:hover span:nth-child(3) {
-              top: 32px;
-              -webkit-transform: rotate(0deg);
-              -moz-transform: rotate(0deg);
-              -o-transform: rotate(0deg);
-              transform: rotate(0deg);
-          }
+             span:nth-child(3) {
+                top: 32px;
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
         }
 
         ul:hover {
@@ -1202,11 +1203,25 @@ nav {
 
     .services {
         ul {
-            margin-top: 20px;
+            margin-top: 0;
             padding-left: 0;
 
             li {
                 @include center-block();
+
+                .services__item {
+                    background-color: rgba(0,255,255,0.2);
+                    box-shadow: 0 0 10px 0 rgba(100, 100, 100, 1);
+                    transition: 1s;
+
+                    & > img {
+                        z-index: 20;
+                    }
+
+                    & > p {
+                        z-index: 20;
+                    }
+                }
             }
         }
     }
