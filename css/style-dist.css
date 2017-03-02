@@ -5976,7 +5976,7 @@ nav .menu-btn {
   border-radius: 0;
   border-color: #fff;
   margin-bottom: -1px;
-  box-shadow: inset 0 0 4px 0;
+  box-shadow: inset 0 0 4px 0 #7c828c;
   position: fixed;
   z-index: 5; }
 
@@ -6000,7 +6000,7 @@ nav .main-menu {
     border-color: #fff;
     background-color: rgba(255, 255, 255, 0.5);
     margin-bottom: -2px;
-    box-shadow: inset 0 0 4px 0; }
+    box-shadow: inset 0 0 4px 0 #7c828c; }
     nav .main-menu li:hover {
       box-shadow: inset 0 0 6px 0 rgba(255, 255, 255, 0.5);
       background-color: rgba(0, 0, 0, 0.1); }
@@ -6111,7 +6111,7 @@ nav .main-menu {
     background-color: #fff; }
 
 .stock {
-  background-image: url("../img/stock.jpg");
+  background-color: #e8ebef;
   background-repeat: no-repeat;
   background-size: cover;
   padding-bottom: 20px; }
@@ -6161,7 +6161,8 @@ nav .main-menu {
     border-radius: 10px;
     border-color: rgba(255, 255, 255, 0.22);
     text-align: center;
-    min-width: 240px; }
+    min-width: 240px;
+    box-shadow: 0 0px 10px 0 #7c828c; }
     @media (min-width: 768px) {
       .stock-right-col {
         float: left;
@@ -6191,7 +6192,7 @@ nav .main-menu {
     border-radius: 10px;
     border-color: #fff;
     font-size: 1.25rem;
-    box-shadow: 0 2px 4px 0; }
+    box-shadow: 0 2px 4px 0 #7c828c; }
     .stock-form input:not([type="submit"]):hover {
       box-shadow: 0 2px 4px 0 silver; }
   .stock-form .stock-form__btn {
@@ -6204,7 +6205,7 @@ nav .main-menu {
     font-size: 1.25rem;
     background-color: #fff; }
     .stock-form .stock-form__btn:hover {
-      box-shadow: 0 2px 10px 0; }
+      box-shadow: 0 2px 10px 0 #7c828c; }
     .stock-form .stock-form__btn:active {
       box-shadow: inset 0 0 2px 4px #646464; }
   .stock-form .btn {
@@ -6397,15 +6398,12 @@ nav .main-menu {
       .gallery ul li img {
         height: 300px;
         object-fit: cover;
-        object-position: center; }
+        object-position: center;
+        transition: .3s; }
     .gallery ul li:hover img {
-      object-position: 50% 50%;
       -webkit-transform: scale(2, 2);
       -ms-transform: scale(2, 2);
-      transform: scale(2, 2);
-      transition: -webkit-transform 10s ease 0;
-      transition: transform 10s ease 0;
-      transition: transform 10s ease 0, -webkit-transform 10s ease 0; }
+      transform: scale(2, 2); }
   .gallery .btn-gallery {
     float: right;
     margin-right: 15px;
@@ -6413,7 +6411,7 @@ nav .main-menu {
     box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.3);
     border-radius: 30px; }
     .gallery .btn-gallery:hover {
-      box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.8); }
+      box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.7); }
     .gallery .btn-gallery:active {
       box-shadow: inset 0 2px 10px 0 rgba(0, 0, 0, 0.3); }
 
@@ -6636,7 +6634,7 @@ nav .main-menu {
       padding-right: 15px;
       text-align: center;
       background-color: #edeff1;
-      box-shadow: 0 0 29px 0;
+      box-shadow: 0 0 29px 0 #7c828c;
       padding: 30px 20px;
       max-width: 400px;
       min-width: 265px;
@@ -6903,8 +6901,9 @@ nav .main-menu {
     margin: 0 auto; }
   .title {
     border: none;
-    bottom: 40%;
-    left: 10%; }
+    position: relative;
+    margin-right: 0;
+    margin-left: -50px; }
   .workers ul li {
     max-width: 100%;
     margin-left: 25%;
@@ -6920,18 +6919,20 @@ nav .main-menu {
     width: 70%; } }
 
 @media screen and (max-width: 530px) {
-  .title h1 {
-    text-align: center;
-    min-width: 200px;
-    font-family: "Roboto Regular", "Arial", sans-serif;
-    color: #fff;
-    font-size: 1rem; }
-    .title h1::first-line {
-      font-family: "Roboto Bold", "Arial", sans-serif;
-      font-weight: bold;
-      font-size: 2rem;
+  .title {
+    margin-left: 0px; }
+    .title h1 {
+      text-align: center;
+      min-width: 200px;
+      font-family: "Roboto Regular", "Arial", sans-serif;
       color: #fff;
-      line-height: 2.3rem; }
+      font-size: 1rem; }
+      .title h1::first-line {
+        font-family: "Roboto Bold", "Arial", sans-serif;
+        font-weight: bold;
+        font-size: 2rem;
+        color: #fff;
+        line-height: 2.3rem; }
   .undertitle h2 {
     font-family: "Roboto Regular", "Arial", sans-serif;
     color: #31353e;
@@ -7068,6 +7069,9 @@ nav .main-menu {
           z-index: 20; }
         .services ul li .services__item > p {
           z-index: 20; }
+      .services ul li .btn {
+        opacity: 1;
+        visibility: visible; }
   .stock .stock-timer {
     margin-top: 10px; }
   .about {
@@ -7131,7 +7135,7 @@ nav .main-menu {
   .workers ul li {
     margin-left: 5%;
     margin-right: 5%;
-    box-shadow: 0 0 10px 0; }
+    box-shadow: 0 0 10px 0 #7c828c; }
   .map .map-contacts {
     position: relative;
     float: left;

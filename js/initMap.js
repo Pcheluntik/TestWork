@@ -8,7 +8,7 @@ function initMap() {
     lng: 30.323491
   };
   var map = new google.maps.Map(document.getElementById("map-google"), {
-    center: myLatLng,
+    center:  59.938547, 30.323491,
     scrollwheel: false,
     zoom: 17
   });
@@ -19,4 +19,5 @@ function initMap() {
     title: "Gllacy",
     icon: image
   });*/
+
 }
